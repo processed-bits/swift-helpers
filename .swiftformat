@@ -1,0 +1,21 @@
+# Rules
+--acronyms "ID,URL,UUID"
+--allman false
+--decimalgrouping 3,4
+--disable blankLinesAroundMark
+--disable blankLinesAtEndOfScope
+--disable blankLinesAtStartOfScope
+--disable spaceAroundOperators
+--disable strongOutlets
+--disable wrapMultilineStatementBraces
+--guardelse same-line
+--indent tab
+--stripunusedargs unnamed-only
+
+# Files
+--exclude **/*generated.swift
+--exclude **/fastlane
+--exclude Packages
+--exclude Pods
+--exclude Supporting
+--exclude vendor
