@@ -1,9 +1,9 @@
-// UserDefaultRawRepresentable.swift, 15.12.2020-12.02.2023.
+// UserDefaultRawRepresentable.swift, 15.12.2020-20.11.2023.
 // Copyright © 2020-2023 Stanislav Lomachinskiy.
 
 import Foundation
 
-/// `UserDefaultRawRepresentable` property wrapper with an underlying associated raw value.
+/// `UserDefaultRawRepresentable` property wrapper with an underlying associated raw value. See [`RawRepresentable`](https://developer.apple.com/documentation/swift/rawrepresentable) protocol.
 ///
 /// This property wrapper follows the conventions of [`UserDefaults`](https://developer.apple.com/documentation/foundation/userdefaults) class.
 ///
@@ -15,32 +15,35 @@ import Foundation
 ///
 /// Default values may be specified either app-globally using [`register(defaults:)`](https://developer.apple.com/documentation/foundation/userdefaults/1417065-register) ([`registrationDomain`](https://developer.apple.com/documentation/foundation/userdefaults/1415953-registrationdomain) is added to the end of the search list) or using a `defaultValue` when initializing respective property wrapper (its value is returned after the end of the search list).
 @propertyWrapper
-open class UserDefaultRawRepresentable<Value: RawRepresentable>: UserDefault<Value> {
+open class UserDefaultRawRepresentable<Value: RawRepresentable> {
 
-	override public var wrappedValue: Value? {
+	let defaults: UserDefaults
+	let key: String
+	let defaultValue: Value?
+	private var userDefault: UserDefault<Value.RawValue>
+
+	public var wrappedValue: Value? {
 		get {
-			if let rawValue {
-				return Value(rawValue: rawValue)
-			} else {
+			guard let rawValue = userDefault.wrappedValue, let value = Value(rawValue: rawValue) else {
 				return defaultValue
 			}
+			return value
 		}
 		set {
-			rawValue = newValue?.rawValue
+			userDefault.wrappedValue = newValue?.rawValue
 		}
 	}
 
-	public var rawValue: Value.RawValue? {
-		get {
-			defaults.object(forKey: key) as? Value.RawValue ?? defaultValue?.rawValue
-		}
-		set {
-			if let newValue {
-				defaults.set(newValue, forKey: key)
-			} else {
-				defaults.removeObject(forKey: key)
-			}
-		}
+	public init(defaults: UserDefaults = .standard, key: String, defaultValue: Value? = nil) {
+		self.defaults = defaults
+		self.key = key
+		self.defaultValue = defaultValue
+		userDefault = UserDefault(defaults: defaults, key: key, defaultValue: defaultValue?.rawValue)
+	}
+
+	public convenience init(wrappedValue: Value? = nil, defaults: UserDefaults = .standard, key: String, defaultValue: Value? = nil) {
+		self.init(defaults: defaults, key: key, defaultValue: defaultValue)
+		userDefault = UserDefault(wrappedValue: wrappedValue?.rawValue, defaults: defaults, key: key, defaultValue: defaultValue?.rawValue)
 	}
 
 }

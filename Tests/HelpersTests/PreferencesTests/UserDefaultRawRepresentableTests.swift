@@ -1,33 +1,46 @@
-// UserDefaultRawRepresentableTests.swift, 12.02.2023.
+// UserDefaultRawRepresentableTests.swift, 12.02.2023-20.11.2023.
 // Copyright © 2023 Stanislav Lomachinskiy.
 
 import Helpers
 import XCTest
 
-final class UserDefaultRawRepresentableTests: UserDefaultTestCase {
+final class UserDefaultRawRepresentableTests: XCTestCase {
 
-	@UserDefaultRawRepresentable(key: "test") var testProperty: TestValue?
+	private let key = "test"
 
-	enum TestValue: Int, CaseIterable {
+	private enum TestCounter: Int, CaseIterable {
 		case one = 1, two, three, four, five
 	}
 
+	private struct TestDirections: OptionSet {
+		let rawValue: UInt8
+
+		// swiftlint:disable identifier_name
+		static let up = TestDirections(rawValue: 1 << 0)
+		static let down = TestDirections(rawValue: 1 << 1)
+		static let left = TestDirections(rawValue: 1 << 2)
+		static let right = TestDirections(rawValue: 1 << 3)
+		// swiftlint:enable identifier_name
+	}
+
 	func test() throws {
-		// No value.
-		print(label: Label.type, value: _testProperty)
-		print(label: Label.notSet, value: testProperty as Any)
-		XCTAssertNil(testProperty)
+		try process(TestCounter.allCases.randomElement())
+		try process(TestDirections([.up, .right]))
+	}
 
-		// Non-nil value.
-		testProperty = TestValue.allCases.randomElement()
-		print(label: Label.set, value: testProperty as Any)
-		let unwrappedRawValue = try XCTUnwrap(_testProperty.rawValue)
-		XCTAssertEqual(testProperty, TestValue(rawValue: unwrappedRawValue))
+	private func process<Value: RawRepresentable & Equatable>(_ value: Value?) throws {
+		@UserDefaultRawRepresentable(key: key) var wrapper: Value? = value
+		let pairs: KeyValuePairs<String, Any> = try [
+			"Wrapper type": _wrapper,
+			"Value type": Value.self,
+			"Value": XCTUnwrap(value),
+			"Raw value": XCTUnwrap(value).rawValue,
+		]
+		print(pairs.format(keyTerminator: ":"))
 
-		// Removed value.
-		testProperty = nil
-		print(label: Label.removed, value: testProperty as Any)
-		XCTAssertNil(testProperty)
+		XCTAssertEqual(wrapper, value)
+		wrapper = nil
+		XCTAssertNil(wrapper)
 	}
 
 }

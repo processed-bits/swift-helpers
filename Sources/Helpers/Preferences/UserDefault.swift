@@ -1,4 +1,4 @@
-// UserDefault.swift, 29.02.2020-12.02.2023.
+// UserDefault.swift, 29.02.2020-20.11.2023.
 // Copyright © 2020-2023 Stanislav Lomachinskiy.
 
 import Foundation
@@ -23,10 +23,19 @@ open class UserDefault<Value> {
 
 	public var wrappedValue: Value? {
 		get {
-			defaults.object(forKey: key) as? Value ?? defaultValue
+			let value: Value?
+			switch Value.self {
+			case is URL.Type:
+				value = defaults.url(forKey: key) as? Value
+			default:
+				value = defaults.object(forKey: key) as? Value
+			}
+			return value ?? defaultValue
 		}
 		set {
-			if let newValue {
+			if let newValue = newValue as? URL {
+				defaults.set(newValue, forKey: key)
+			} else if let newValue {
 				defaults.set(newValue, forKey: key)
 			} else {
 				defaults.removeObject(forKey: key)
@@ -34,10 +43,14 @@ open class UserDefault<Value> {
 		}
 	}
 
-	public init(wrappedValue: Value? = nil, defaults: UserDefaults = .standard, key: String, defaultValue: Value? = nil) {
+	public init(defaults: UserDefaults = .standard, key: String, defaultValue: Value? = nil) {
 		self.defaults = defaults
 		self.key = key
 		self.defaultValue = defaultValue
+	}
+
+	public convenience init(wrappedValue: Value? = nil, defaults: UserDefaults = .standard, key: String, defaultValue: Value? = nil) {
+		self.init(defaults: defaults, key: key, defaultValue: defaultValue)
 		self.wrappedValue = wrappedValue
 	}
 
