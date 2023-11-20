@@ -33,4 +33,5 @@ Extended logger, legacy logger, stopwatches, counters, and other helpers.
 
 ### Extensions
 
+- ``Swift/KeyValuePairs``
 - ``Foundation/Thread``

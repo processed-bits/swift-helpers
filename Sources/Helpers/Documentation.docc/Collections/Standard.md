@@ -19,4 +19,5 @@ Basic values, strings and text, collections extensions.
 - ``Swift/Collection``
 - ``Swift/Sequence``
 - ``Swift/Set``
+- ``Swift/KeyValuePairs``
 - ``Foundation/IndexPath``
