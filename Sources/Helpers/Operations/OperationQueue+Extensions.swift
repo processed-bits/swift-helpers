@@ -1,5 +1,5 @@
-// OperationQueue+Extensions.swift, 21.10.2019-27.11.2022.
-// Copyright © 2019-2022 Stanislav Lomachinskiy.
+// OperationQueue+Extensions.swift, 21.10.2019-20.12.2023.
+// Copyright © 2019-2023 Stanislav Lomachinskiy.
 
 import Foundation
 
@@ -28,7 +28,7 @@ public extension OperationQueue {
 	///
 	/// - Parameters:
 	///   - block: The block to add to the receiver’s list. The block takes one parameter (weak reference to the `BlockOperation` itself) and have no return value.
-	func addOperation(_ block: @escaping (BlockOperation?) -> Void) {
+	func addOperation(_ block: @escaping @Sendable (BlockOperation?) -> Void) {
 		let operation = BlockOperation(block: block)
 		addOperation(operation)
 	}

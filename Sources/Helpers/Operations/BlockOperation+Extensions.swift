@@ -1,5 +1,5 @@
-// BlockOperation+Extensions.swift, 21.07.2020-27.11.2022.
-// Copyright © 2020-2022 Stanislav Lomachinskiy.
+// BlockOperation+Extensions.swift, 21.07.2020-20.12.2023.
+// Copyright © 2020-2023 Stanislav Lomachinskiy.
 
 import Foundation
 
@@ -9,7 +9,7 @@ public extension BlockOperation {
 	///
 	/// - Parameters:
 	///   - block: The block to add to the new block operation object’s list. The block takes one parameter (weak reference to the `BlockOperation` itself) and have no return value.
-	convenience init(block: @escaping (BlockOperation?) -> Void) {
+	convenience init(block: @escaping @Sendable (BlockOperation?) -> Void) {
 		self.init()
 		addExecutionBlock(block)
 	}
@@ -22,7 +22,7 @@ public extension BlockOperation {
 	///
 	/// - Parameters:
 	///   - block: The block to add to the receiver’s list. The block takes one parameter (weak reference to the `BlockOperation` itself) and have no return value.
-	func addExecutionBlock(_ block: @escaping (BlockOperation?) -> Void) {
+	func addExecutionBlock(_ block: @escaping @Sendable (BlockOperation?) -> Void) {
 		addExecutionBlock { [weak self] in
 			block(self)
 		}
