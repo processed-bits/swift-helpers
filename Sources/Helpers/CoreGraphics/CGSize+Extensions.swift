@@ -25,8 +25,8 @@ public extension CGSize {
 
 	// MARK: Geometric Properties
 
-	/// A ratio value.
-	var ratio: CGFloat {
+	/// The aspect ratio (width divided by height) of the size.
+	var aspectRatio: CGFloat {
 		width / height
 	}
 
