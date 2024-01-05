@@ -4,6 +4,4 @@ builder:
     - documentation_targets:
         - Helpers
       custom_documentation_parameters:
-        - --fallback-display-name "Swift Helpers"
-        - --fallback-bundle-identifier "com.processed-bits.Swift-Helpers"
         - --include-extended-types
