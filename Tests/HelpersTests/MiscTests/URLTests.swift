@@ -1,17 +1,49 @@
-// URLTests.swift, 17.05.2022-04.05.2023.
-// Copyright © 2022-2023 Stanislav Lomachinskiy.
+// URLTests.swift, 17.05.2022-04.03.2024.
+// Copyright © 2022-2024 Stanislav Lomachinskiy.
 
 import Helpers
 import XCTest
 
 final class URLTests: XCTestCase {
 
+	// MARK: `Equatable` Implementation
+
+	func testEquality() throws {
+		XCTAssertEqual(
+			URL(fileURLWithPath: "/Library/Caches", isDirectory: true),
+			try XCTUnwrap(URL(string: "file:///Library/Caches/"))
+		)
+		XCTAssertNotEqual(
+			URL(fileURLWithPath: "/Library/Caches", isDirectory: true),
+			URL(fileURLWithPath: "/Library/Caches", isDirectory: false)
+		)
+		XCTAssertNotEqual(
+			try XCTUnwrap(URL(string: "file:///Library/Caches")),
+			try XCTUnwrap(URL(string: "file:///Library/Caches/"))
+		)
+		XCTAssertNotEqual(
+			try XCTUnwrap(URL(string: "ssh://user:password@server.local:443/path?key=value#fragment")),
+			try XCTUnwrap(URL(string: "ssh://user:password@server.local:443/path?key=value#fragment2"))
+		)
+	}
+
 	// MARK: `Comparable` Implementation
 
-	func testSorting() {
-		// swiftlint:disable force_unwrapping
-		// Test file paths.
-		let filePaths = [
+	/// Asserts that each pair of URLs in the array is in sorted order.
+	private func assertSortedOrder(of urls: [URL], file: StaticString = #filePath, line: UInt = #line) {
+		for (index, url) in urls.enumerated() {
+			let nextIndex = index + 1
+			guard nextIndex < urls.count else {
+				return
+			}
+			let nextURL = urls[nextIndex]
+			XCTAssertLessThan(url, nextURL, file: file, line: line)
+		}
+	}
+
+	func testSorting() throws {
+		// File URLs.
+		let fileURLs = [
 			"/A/B/C",
 			"/A/B C",
 			"/A B/C",
@@ -19,68 +51,24 @@ final class URLTests: XCTestCase {
 			"/File 9",
 			"/File 11",
 			"/File 99",
-		]
-		let fileURLs = filePaths.map { URL(fileURLWithPath: $0) }
-		checkOrder(of: fileURLs)
-		// Test simple URLs.
-		let simpleURLStrings = [
+		].map { URL(fileURLWithPath: $0) }
+		assertSortedOrder(of: fileURLs)
+
+		// Simple URLs.
+		let simpleURLs = try [
 			"https://github.com/apple/swift",
 			"https://github.com/apple/swift/blob/main/README.md",
 			"https://github.com/apple/swift-evolution",
-		]
-		let simpleURLs = simpleURLStrings.map { URL(string: $0)! }
-		checkOrder(of: simpleURLs)
-		// Test complex URLs, including access to all parts.
-		let complexURLStrings = [
+		].map { try XCTUnwrap(URL(string: $0)) }
+		assertSortedOrder(of: simpleURLs)
+
+		// Complex URLs.
+		let complexURLs = try [
 			"https://github.com/apple/swift",
-			"ssh://Test%20Server.local:443",
-			"ssh://User:password@Test%20Server.local:443/path?test=true#fragment",
-		]
-		let complexURLs = complexURLStrings.map { URL(string: $0)! }
-		checkOrder(of: complexURLs)
-		// swiftlint:enable force_unwrapping
-	}
-
-	private func checkOrder(of urls: [URL]) {
-		for (index, url) in urls.enumerated() {
-			let nextIndex = index + 1
-			guard nextIndex < urls.count else {
-				return
-			}
-			let nextURL = urls[nextIndex]
-			XCTAssertLessThan(url, nextURL)
-		}
-	}
-
-	// MARK: Relative URLs
-
-	private let base = URL(fileURLWithPath: "/base", isDirectory: true)
-
-	func testNonStandardizedRelativeURLs() {
-		let absoluteURL = URL(fileURLWithPath: "/base/./../base/file", isDirectory: false)
-
-		// Relative and relativized URLs must be equal.
-		let relativeURL = URL(fileURLWithPath: "file", isDirectory: false, relativeTo: base)
-		let relativizedURL = absoluteURL.relativeURL(to: base)
-		XCTAssertEqual(relativeURL, relativizedURL)
-		XCTAssertEqual(relativeURL.relativePath, relativizedURL.relativePath)
-	}
-
-	func testRelativeURLs() throws {
-		let fileURL = URL(fileURLWithPath: "file", isDirectory: false, relativeTo: base)
-		let stringURL = try XCTUnwrap(URL(string: "string", relativeTo: base))
-
-		// Absolute URLs must differ.
-		var mutatedFileURL = fileURL.absoluteURL
-		var mutatedStringURL = stringURL.absoluteURL
-		XCTAssertNotEqual(fileURL.relativePath, mutatedFileURL.relativePath)
-		XCTAssertNotEqual(stringURL.relativePath, mutatedStringURL.relativePath)
-
-		// Relativized URLs must equal original ones.
-		mutatedFileURL.relativize(to: base)
-		mutatedStringURL.relativize(to: base)
-		XCTAssertEqual(fileURL, mutatedFileURL)
-		XCTAssertEqual(stringURL, mutatedStringURL)
+			"ssh://server.local:443",
+			"ssh://user:password@server.local:443/path?name=value#fragment",
+		].map { try XCTUnwrap(URL(string: $0)) }
+		assertSortedOrder(of: complexURLs)
 	}
 
 }

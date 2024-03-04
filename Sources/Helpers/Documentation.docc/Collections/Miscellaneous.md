@@ -1,6 +1,6 @@
 # Miscellaneous
 
-`URL` extension, `URLBookmark` object.
+`URL` extensions, `URLBookmark` object.
 
 ## Topics
 

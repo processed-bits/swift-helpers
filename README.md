@@ -12,7 +12,7 @@ CoreGraphics | `CGFloat`, `CGSize` extensions.
 ExitCode | Exit code protocol and helpers for working with exit codes.
 Logging and Debugging | Extended logger, legacy logger, stopwatches, counters, and other helpers.
 Menus | `NSMenuItem` extension.
-Miscellaneous | `URL` extension, `URLBookmark` object.
+Miscellaneous | `URL` extensions, `URLBookmark` object.
 Networking | `HTTPURLResponse` extension.
 Operations | `BlockOperation`, `OperationQueue` extensions.
 Output | Helpers for printing to standard error and for output buffering.
@@ -52,4 +52,4 @@ Open the generated documentation archive with Xcode to import it.
 
 ---
 
-Copyright © 2023 Stanislav Lomachinskiy. [MIT License](LICENSE.txt).
+Copyright © 2023-2024 Stanislav Lomachinskiy. [MIT License](LICENSE.txt).
