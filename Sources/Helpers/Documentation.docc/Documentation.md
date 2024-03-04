@@ -12,25 +12,16 @@ All helpers are bundled as a single module for convenience of easy import.
 
 ## Topics
 
+- <doc:AppKitCollection>
 - <doc:Concurrency>
-- <doc:Controllers>
 - <doc:CoreAnimation>
 - <doc:CoreData>
 - <doc:CoreGraphics>
 - <doc:ExitCode>
+- <doc:FoundationCollection>
 - <doc:LoggingAndDebugging>
-- <doc:Menus>
-- <doc:Miscellaneous>
-- <doc:Networking>
-- <doc:Operations>
 - <doc:Output>
-- <doc:Preferences>
-- <doc:ProcessCollection>
-- <doc:RegexCollection>
-- <doc:Resources>
-- <doc:Standard>
-- <doc:TouchBar>
-- <doc:Views>
+- <doc:StandardLibrary>
 
 ### Other
 

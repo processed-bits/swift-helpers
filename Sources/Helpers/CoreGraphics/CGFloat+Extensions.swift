@@ -1,7 +1,7 @@
-// CGFloat+Extensions.swift, 19.11.2022.
-// Copyright © 2022 Stanislav Lomachinskiy.
+// CGFloat+Extensions.swift, 19.11.2022-23.03.2024.
+// Copyright © 2022-2024 Stanislav Lomachinskiy.
 
-import Foundation
+import CoreFoundation
 
 public extension CGFloat {
 

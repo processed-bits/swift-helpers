@@ -1,7 +1,5 @@
-// dumpOutput.swift, 25.02.2023.
-// Copyright © 2023 Stanislav Lomachinskiy.
-
-import Foundation
+// dumpOutput.swift, 25.02.2023-23.03.2024.
+// Copyright © 2023-2024 Stanislav Lomachinskiy.
 
 /// Returns a dump of the given object’s contents.
 ///

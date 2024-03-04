@@ -1,7 +1,5 @@
-// ExtendedLogger.swift, 11.02.2023-04.05.2023.
-// Copyright © 2023 Stanislav Lomachinskiy.
-
-import Foundation
+// ExtendedLogger.swift, 11.02.2023-23.03.2024.
+// Copyright © 2023-2024 Stanislav Lomachinskiy.
 
 public protocol ExtendedLogger {
 

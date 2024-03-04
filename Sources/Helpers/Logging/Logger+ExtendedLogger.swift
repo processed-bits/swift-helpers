@@ -1,8 +1,7 @@
-// Logger+ExtendedLogger.swift, 11.01.2021-01.05.2023.
-// Copyright © 2021-2023 Stanislav Lomachinskiy.
+// Logger+ExtendedLogger.swift, 11.01.2021-23.03.2024.
+// Copyright © 2021-2024 Stanislav Lomachinskiy.
 
-import Foundation
-import os.log
+import os
 
 @available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *)
 extension Logger: ExtendedLogger {

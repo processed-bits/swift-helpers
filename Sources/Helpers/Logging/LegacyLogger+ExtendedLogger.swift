@@ -1,7 +1,5 @@
-// LegacyLogger+ExtendedLogger.swift, 11.01.2021-01.05.2023.
-// Copyright © 2021-2023 Stanislav Lomachinskiy.
-
-import Foundation
+// LegacyLogger+ExtendedLogger.swift, 11.01.2021-23.03.2024.
+// Copyright © 2021-2024 Stanislav Lomachinskiy.
 
 extension LegacyLogger: ExtendedLogger {
 

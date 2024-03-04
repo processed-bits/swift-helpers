@@ -1,5 +1,5 @@
-// CallsCounterTests.swift, 11.02.2023-06.03.2023.
-// Copyright © 2023 Stanislav Lomachinskiy.
+// CallsCounterTests.swift, 11.02.2023-23.03.2024.
+// Copyright © 2023-2024 Stanislav Lomachinskiy.
 
 import Helpers
 import XCTest
@@ -10,6 +10,7 @@ final class CallsCounterTests: XCTestCase {
 
 	private let iterations = 10_000
 
+	@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 	func testExpectedCountWithTaskGroup() async {
 		let callsCounter = CallsCounter(expectedCount: iterations)
 		let threadsCounter = ThreadsCounter()

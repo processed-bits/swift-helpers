@@ -1,7 +1,5 @@
-// print.swift, 15.01.2023-12.03.2023.
-// Copyright © 2023 Stanislav Lomachinskiy.
-
-import Foundation
+// print.swift, 15.01.2023-23.03.2024.
+// Copyright © 2023-2024 Stanislav Lomachinskiy.
 
 /// Writes the textual representations of the given items into the given output stream.
 ///
