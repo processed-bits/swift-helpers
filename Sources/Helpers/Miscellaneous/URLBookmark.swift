@@ -1,31 +1,43 @@
-// URLBookmark.swift, 20.03.2020-28.02.2023.
-// Copyright © 2020-2023 Stanislav Lomachinskiy.
+// URLBookmark.swift, 20.03.2020-26.03.2024.
+// Copyright © 2020-2024 Stanislav Lomachinskiy.
 
 import Foundation
 
-/// A URL bookmark object.
+/// A URL bookmark struct.
 ///
-/// You can initialize an object with existing bookmark data or create bookmark data with a URL.
+/// You can initialize a struct with existing bookmark data or create bookmark data with a URL.
 ///
-/// Add an appropriate entitlement for security-scoped bookmarks:
+/// Add appropriate entitlements for application or document security-scoped bookmarks:
 ///
 /// - `com.apple.security.files.bookmarks.app-scope`
 /// - `com.apple.security.files.bookmarks.document-scope`
-public class URLBookmark {
+public struct URLBookmark: Codable {
 
 	/// Bookmark data.
 	public private(set) var data: Data?
-	/// If `true`, the bookmark data is stale.
+	/// If `true`, the bookmark data is stale. This property is updated after accessing the ``resolve()`` method.
 	public private(set) var isStale = false
 
-	private let creationOptions: URL.BookmarkCreationOptions
-	private let resolutionOptions: URL.BookmarkResolutionOptions
-	private let keys: Set<URLResourceKey>?
-	private let relativeURL: URL?
+	/// Options used when creating bookmark data.
+	public let creationOptions: URL.BookmarkCreationOptions
+	/// Options used when resolving bookmark data.
+	public let resolutionOptions: URL.BookmarkResolutionOptions
+	/// Keys for resource values to be included when creating bookmark data.
+	public let keys: Set<URLResourceKey>?
+	/// The base URL that the bookmark data is relative to.
+	public let baseURL: URL?
+
+	enum CodingKeys: CodingKey {
+		case data
+		case creationOptions
+		case resolutionOptions
+		case keys
+		case baseURL
+	}
 
 	// MARK: Creating a URL Bookmark Object
 
-	/// All parameters except for bookmark data must be set during initialization to required values.
+	/// Creates a URL bookmark. All parameters except for bookmark data must be set during initialization.
 	///
 	/// - Parameters:
 	///   - data: Bookmark data.
@@ -38,31 +50,37 @@ public class URLBookmark {
 	///
 	///     - To resolve an app-scoped bookmark, use a value of `nil`.
 	///     - To resolve a document-scoped bookmark, use the *absolute* path (despite this parameter’s name) to the document from which you retrieved the bookmark.
-	public init(data: Data? = nil, creationOptions: URL.BookmarkCreationOptions = [], resolutionOptions: URL.BookmarkResolutionOptions = [], includingResourceValuesForKeys keys: Set<URLResourceKey>? = nil, relativeTo relativeURL: URL? = nil) {
+	public init(
+		data: Data? = nil,
+		creationOptions: URL.BookmarkCreationOptions = [],
+		resolutionOptions: URL.BookmarkResolutionOptions = [],
+		includingResourceValuesForKeys keys: Set<URLResourceKey>? = nil,
+		relativeTo baseURL: URL? = nil
+	) {
 		self.data = data
 		self.creationOptions = creationOptions
 		self.resolutionOptions = resolutionOptions
 		self.keys = keys
-		self.relativeURL = relativeURL
+		self.baseURL = baseURL
 	}
 
 	// MARK: Creating and Resolving
 
 	/// Creates bookmark data for the URL.
-	public func create(with url: URL?) throws {
-		data = try url?.bookmarkData(options: creationOptions, includingResourceValuesForKeys: keys, relativeTo: relativeURL)
+	public mutating func create(with url: URL?) throws {
+		data = try url?.bookmarkData(options: creationOptions, includingResourceValuesForKeys: keys, relativeTo: baseURL)
 		isStale = false
 	}
 
 	/// Returns a URL that refers to a location specified by resolving bookmark data.
 	///
-	/// The object tries to recreate stale bookmark data automatically. If data cannot be recreated, no error is thrown, but `isStale` property will resolve to `true`.
-	public func resolve() throws -> URL? {
+	/// This method tries to recreate stale bookmark data automatically. If data cannot be recreated, no error is thrown, but `isStale` property will resolve to `true`.
+	public mutating func resolve() throws -> URL? {
 		guard let data else {
 			return nil
 		}
-		let url = try URL(resolvingBookmarkData: data, options: resolutionOptions, relativeTo: relativeURL, bookmarkDataIsStale: &isStale)
-		// We should create a new bookmark using the returned URL and use it in place of any stored copies of the existing bookmark.
+		let url = try URL(resolvingBookmarkData: data, options: resolutionOptions, relativeTo: baseURL, bookmarkDataIsStale: &isStale)
+		// Create a new bookmark using the returned URL and use it in place of any stored copies of the existing bookmark.
 		if isStale {
 			var isAccessingSecurityScopedResource = false
 			if creationOptions.contains(.withSecurityScope) {
@@ -80,3 +98,7 @@ public class URLBookmark {
 	}
 
 }
+
+extension URL.BookmarkCreationOptions: Codable {}
+extension URL.BookmarkResolutionOptions: Codable {}
+extension URLResourceKey: Codable {}
