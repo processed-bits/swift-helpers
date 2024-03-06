@@ -4,10 +4,6 @@ Basic values, strings and text, collections extensions.
 
 ## Topics
 
-### Basic Values
-
-- ``Swift/Bool``
-
 ### Strings and Text
 
 - ``Swift/StringProtocol``

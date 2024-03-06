@@ -20,7 +20,7 @@ Preferences | Property wrappers for the user’s defaults database.
 Process | `Process` extensions for async running, shell scripts, working with output.
 Regex | `Regex` match operator, `NSRegularExpression`, `NSTextCheckingResult`, `String` extensions.
 Resources | `Bundle` extension.
-Standard | Basic values, strings and text, collections extensions.
+Standard | Strings and text, collections extensions.
 TouchBar | `NSTouchBar` extension, a workaround for alert items.
 Views | Helpers for views, images, bindings, responder chain.
 
