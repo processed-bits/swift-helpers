@@ -1,7 +1,5 @@
-// OutputStreamKind.swift, 03.04.2023.
-// Copyright © 2023 Stanislav Lomachinskiy.
-
-import Foundation
+// OutputStreamKind.swift, 03.04.2023-23.03.2024.
+// Copyright © 2023-2024 Stanislav Lomachinskiy.
 
 /// Output stream kind.
 public enum OutputStreamKind {

@@ -1,12 +1,12 @@
-// BufferedOutputCollector.swift, 02.04.2023-25.04.2023.
-// Copyright © 2023 Stanislav Lomachinskiy.
+// BufferedOutputCollector.swift, 02.04.2023-23.03.2024.
+// Copyright © 2023-2024 Stanislav Lomachinskiy.
 
 import Foundation
 
 // swiftlint:disable deployment_target
 
 /// An object that collects buffered output using pipes.
-@available(iOS 8.0, macOS 10.10, tvOS 9.0, watchOS 2.0, *)
+@available(iOS 8.0, macOS 10.10, macCatalyst 13.0, tvOS 9.0, visionOS 1.0, watchOS 2.0, *)
 public class BufferedOutputCollector {
 
 	private let bufferedOutput: BufferedOutput

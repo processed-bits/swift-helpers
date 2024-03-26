@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-	name: "Swift Helpers",
+	name: "swift-helpers",
 	products: [
 		.library(name: "Helpers", targets: ["Helpers"]),
 	],

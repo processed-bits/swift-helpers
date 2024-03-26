@@ -1,7 +1,6 @@
-// LegacyLogger.swift, 11.01.2021-01.05.2023.
-// Copyright © 2021-2023 Stanislav Lomachinskiy.
+// LegacyLogger.swift, 11.01.2021-23.03.2024.
+// Copyright © 2021-2024 Stanislav Lomachinskiy.
 
-import Foundation
 import os.log
 
 /// An object for writing interpolated string messages to the unified logging system using a legacy logging function.

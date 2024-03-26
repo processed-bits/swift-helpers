@@ -1,12 +1,7 @@
-// BufferedOutput.swift, 28.03.2023-25.04.2023.
-// Copyright © 2023 Stanislav Lomachinskiy.
-
-import Foundation
-
-// swiftlint:disable deployment_target
+// BufferedOutput.swift, 28.03.2023-23.03.2024.
+// Copyright © 2023-2024 Stanislav Lomachinskiy.
 
 /// A buffered output object.
-@available(iOS 8.0, macOS 10.10, tvOS 9.0, watchOS 2.0, *)
 public class BufferedOutput: TextOutputStreamable {
 
 	/// The chunks are basic elements of the buffered output.
@@ -115,5 +110,3 @@ public class BufferedOutput: TextOutputStreamable {
 	}
 
 }
-
-// swiftlint:enable deployment_target

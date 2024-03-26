@@ -1,9 +1,10 @@
-// AtomicTests.swift, 12.04.2023-15.04.2023.
-// Copyright © 2023 Stanislav Lomachinskiy.
+// AtomicTests.swift, 12.04.2023-23.03.2024.
+// Copyright © 2023-2024 Stanislav Lomachinskiy.
 
 import Helpers
 import XCTest
 
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 final class AtomicTests: XCTestCase {
 
 	private let iterations = 100_000

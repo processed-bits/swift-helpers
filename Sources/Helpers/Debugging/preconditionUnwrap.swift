@@ -1,7 +1,5 @@
-// File.swift, 14.04.2023-15.04.2023.
-// Copyright © 2023 Stanislav Lomachinskiy.
-
-import Foundation
+// File.swift, 14.04.2023-23.03.2024.
+// Copyright © 2023-2024 Stanislav Lomachinskiy.
 
 /// Checks that an expression is not `nil`, and returns the unwrapped value.
 ///

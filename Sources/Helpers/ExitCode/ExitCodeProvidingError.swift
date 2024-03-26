@@ -1,7 +1,5 @@
-// ExitCodeProvidingError.swift, 19.01.2023-12.03.2023.
-// Copyright © 2023 Stanislav Lomachinskiy.
-
-import Foundation
+// ExitCodeProvidingError.swift, 19.01.2023-23.03.2024.
+// Copyright © 2023-2024 Stanislav Lomachinskiy.
 
 /// A specialized error that provides an exit code.
 ///

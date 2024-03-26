@@ -1,21 +1,19 @@
 # Documentation Resources
 
-## Online
-
-Online documentation is available at [Swift Package Index](https://swiftpackageindex.com/processed-bits/swift-helpers).
-
-## Xcode-built
+## Xcode Documentation
 
 Use `Build Documentation` (⌃⇧⌘D) from the `Product` menu.
 
 > Note: Xcode versions prior to 15 don't generate documentation for extensions to types from other modules.
 
-## DocC Plugin
+## Online Documentation
 
-To manually generate a full documentation archive, run from the package folder:
+Available at [Swift Package Index](https://swiftpackageindex.com/processed-bits/swift-helpers/documentation/).
+
+## DocC Plugin Documentation Archive
+
+Generate documentation archive, then open it with Xcode to import:
 
 ```sh
 swift package generate-documentation --include-extended-types
 ```
-
-Open the generated documentation archive with Xcode to import it.

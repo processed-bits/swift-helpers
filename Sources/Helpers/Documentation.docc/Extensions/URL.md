@@ -1,6 +1,6 @@
 # ``Foundation/URL``
 
-`Comparable` conformance and relative URLs helpers.
+`Comparable` conformance, URL helpers.
 
 ## Topics
 
@@ -8,7 +8,13 @@
 
 - ``<(_:_:)``
 
-### Working with File URLs
+### Working with URLs
 
-- ``relativize(to:)``
-- ``relativeURL(to:)``
+- ``directoryURL``
+
+### Working with relative URLs
+
+- ``isRelative(of:)``
+- ``isDescendant(of:)``
+- ``relativize(to:onlyDescending:)``
+- ``relativized(to:onlyDescending:)``

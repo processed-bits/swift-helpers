@@ -1,7 +1,5 @@
-// CallsCounter.swift, 11.01.2021-13.04.2023.
-// Copyright © 2021-2023 Stanislav Lomachinskiy.
-
-import Foundation
+// CallsCounter.swift, 11.01.2021-23.03.2024.
+// Copyright © 2021-2024 Stanislav Lomachinskiy.
 
 /// Count the number or balance of calls (invocations) for debugging of code.
 public class CallsCounter {
