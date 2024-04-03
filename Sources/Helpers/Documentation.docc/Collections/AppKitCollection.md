@@ -8,6 +8,10 @@ Miscellaneous AppKit extensions.
 
 - ``AppKit/NSTreeController``
 
+### Input
+
+- ``EventMonitor``
+
 ### Menus
 
 - ``AppKit/NSMenuItem``

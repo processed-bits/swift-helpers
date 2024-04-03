@@ -1,5 +1,9 @@
 # Swift Helpers Changelog
 
+## 2.1.0 (2024-04-03)
+
+- `EventMonitor` wrapper, `Timer` extension added.
+
 ## 2.0.0 (2024-03-26)
 
 - Package name updated to `swift-helpers` in the manifest.

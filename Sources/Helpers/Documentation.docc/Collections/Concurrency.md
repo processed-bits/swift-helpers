@@ -1,6 +1,6 @@
 # Concurrency
 
-`Atomic` property wrapper for concurrent access.
+`Atomic` property wrapper.
 
 ## Topics
 

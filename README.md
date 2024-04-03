@@ -3,26 +3,17 @@
 Miscellaneous extensions and objects.
 
 Collection | Description
---- | ---
+:--- | :---
+AppKit | Controllers, input, menus, touch bar, views helpers.
 Concurrency | `Atomic` property wrapper.
-Controllers | `NSTreeController` extension.
-CoreAnimation | `CALayer`, `CAMediaTiming` extensions.
-CoreData | `NSManagedObject`, `NSManagedObjectContext` extensions.
-CoreGraphics | `CGFloat`, `CGSize` extensions.
-ExitCode | Exit code protocol and helpers for working with exit codes.
+Core Animation | `CALayer`, `CAMediaTiming` extensions.
+Core Data | `NSManagedObject`, `NSManagedObjectContext` extensions.
+Core Graphics | `CGFloat`, `CGSize` extensions.
+Exit Code | Exit code protocol and helpers for working with exit codes.
+Foundation | Bindings, collections, file system, operations, processes, threads, scheduling, preferences, resources, strings and text, URLs and URL loading system helpers.
 Logging and Debugging | Extended logger, legacy logger, stopwatches, counters, and other helpers.
-Menus | `NSMenuItem` extension.
-Miscellaneous | `URL` extensions, `URLBookmark` struct.
-Networking | `HTTPURLResponse` extension.
-Operations | `BlockOperation`, `OperationQueue` extensions.
 Output | Helpers for printing to standard error and for output buffering.
-Preferences | Property wrappers for the user’s defaults database.
-Process | `Process` extensions for async running, shell scripts, working with output.
-Regex | `Regex` match operator, `NSRegularExpression`, `NSTextCheckingResult`, `String` extensions.
-Resources | `Bundle` extension.
-Standard | Strings and text, collections extensions.
-TouchBar | `NSTouchBar` extension, a workaround for alert items.
-Views | Helpers for views, images, bindings, responder chain.
+Standard Library | Strings and text, collections extensions.
 
 > Note: This overview mentions the most important helpers in each collection and isn't meant to be exhaustive.
 
@@ -34,7 +25,7 @@ Use Xcode to add the package to a project, or add dependencies manually to a pac
 let package = Package(
     // …
     dependencies: [
-        .package(url: "https://github.com/processed-bits/swift-helpers", upToNextMajor(from: "2.0.0"),
+        .package(url: "https://github.com/processed-bits/swift-helpers", upToNextMajor(from: "2.1.0"),
     ],
 	targets: [
 		.target(
