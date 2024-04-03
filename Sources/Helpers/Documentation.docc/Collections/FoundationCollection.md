@@ -16,12 +16,13 @@ Miscellaneous Foundation extensions.
 
 - ``Foundation/FileHandle``
 
-### Operations, Tasks, Threads
+### Operations, Processes, Threads, Scheduling
 
 - ``Foundation/OperationQueue``
 - ``Foundation/BlockOperation``
 - ``Foundation/Process``
 - ``Foundation/Thread``
+- ``Foundation/Timer``
 
 ### Preferences
 
