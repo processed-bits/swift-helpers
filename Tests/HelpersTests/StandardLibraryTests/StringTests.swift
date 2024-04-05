@@ -1,5 +1,5 @@
-// StringTests.swift, 23.11.2022-20.02.2023.
-// Copyright © 2022-2023 Stanislav Lomachinskiy.
+// StringTests.swift, 23.11.2022-05.04.2024.
+// Copyright © 2022-2024 Stanislav Lomachinskiy.
 
 import Helpers
 import XCTest
@@ -16,7 +16,7 @@ final class StringTests: XCTestCase {
 	}
 
 	func testShortTruncation() {
-		for length in 0..<String.defaultTruncationTerminator.count {
+		for length in 0 ..< String.defaultTruncationTerminator.count {
 			let truncatedString = string.truncated(to: length)
 			let prefixedString = String(string.prefix(length))
 			XCTAssertEqual(truncatedString, prefixedString)
@@ -30,7 +30,7 @@ final class StringTests: XCTestCase {
 		}
 		let truncationLength = string.distance(from: string.startIndex, to: commaIndex) + String.defaultTruncationTerminator.count
 		// Removing extra characters.
-		for length in truncationLength...truncationLength + 2 {
+		for length in truncationLength ... truncationLength + 2 {
 			let truncatedString = string.truncated(to: length)
 			XCTAssertEqual(truncatedString, "Mary had a little lamb…")
 		}

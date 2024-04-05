@@ -1,4 +1,4 @@
-// ProcessAsyncTests.swift, 13.04.2023-07.03.2024.
+// ProcessAsyncTests.swift, 13.04.2023-05.04.2024.
 // Copyright © 2023-2024 Stanislav Lomachinskiy.
 
 #if os(macOS)
@@ -55,7 +55,7 @@
 					try await closure()
 				}
 				// Add more tasks.
-				for _ in 1...loadIterations {
+				for _ in 1 ... loadIterations {
 					taskGroup.addTask {
 						_ = Bool.random()
 					}

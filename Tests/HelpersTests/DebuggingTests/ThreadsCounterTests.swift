@@ -1,4 +1,4 @@
-// ThreadsCounterTests.swift, 06.03.2023-23.03.2024.
+// ThreadsCounterTests.swift, 06.03.2023-05.04.2024.
 // Copyright © 2023-2024 Stanislav Lomachinskiy.
 
 import Helpers
@@ -12,7 +12,7 @@ final class ThreadsCounterTests: XCTestCase {
 	func testWithTaskGroup() async {
 		let threadsCounter = ThreadsCounter()
 		await withTaskGroup(of: Void.self) { taskGroup in
-			for _ in 0..<iterations {
+			for _ in 0 ..< iterations {
 				taskGroup.addTask {
 					threadsCounter.add()
 				}
@@ -38,7 +38,7 @@ final class ThreadsCounterTests: XCTestCase {
 	func testWithOperationQueue() {
 		let threadsCounter = ThreadsCounter()
 		let operationQueue = OperationQueue()
-		for _ in 0..<iterations {
+		for _ in 0 ..< iterations {
 			operationQueue.addOperation {
 				threadsCounter.add()
 			}

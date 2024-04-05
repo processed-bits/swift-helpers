@@ -1,5 +1,5 @@
-// StringProtocolTests.swift, 18.08.2022-05.05.2023.
-// Copyright © 2022-2023 Stanislav Lomachinskiy.
+// StringProtocolTests.swift, 18.08.2022-05.04.2024.
+// Copyright © 2022-2024 Stanislav Lomachinskiy.
 
 import Helpers
 import XCTest
@@ -25,7 +25,7 @@ final class StringProtocolTests: XCTestCase {
 	// MARK: Padding
 
 	func testComparePadding() {
-		for length in 0...99 {
+		for length in 0 ... 99 {
 			let standardPaddedString = string.padding(toLength: length, withPad: ".", startingAt: 0)
 			let paddedString = string.padding(toLength: length, withPad: ".")
 			XCTAssertEqual(paddedString, standardPaddedString)
@@ -33,7 +33,7 @@ final class StringProtocolTests: XCTestCase {
 	}
 
 	func testLeadingPadding() {
-		for length in 0...99 {
+		for length in 0 ... 99 {
 			let paddedString = string.padding(toLength: length, padSide: .leading)
 			XCTAssertEqual(paddedString.count, length)
 		}

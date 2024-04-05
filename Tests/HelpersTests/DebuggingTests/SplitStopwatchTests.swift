@@ -1,5 +1,5 @@
-// SplitStopwatchTests.swift, 22.04.2023-25.04.2023.
-// Copyright © 2023 Stanislav Lomachinskiy.
+// SplitStopwatchTests.swift, 22.04.2023-05.04.2024.
+// Copyright © 2023-2024 Stanislav Lomachinskiy.
 
 import Helpers
 import XCTest
@@ -13,7 +13,7 @@ final class SplitStopwatchTests: XCTestCase {
 
 		let interval: TimeInterval = 0.1
 		let iterations = 5
-		for iteration in 1...iterations {
+		for iteration in 1 ... iterations {
 			try await Task.sleep(for: .seconds(interval))
 			let isSplitIteration = iteration < iterations
 			if isSplitIteration {

@@ -1,16 +1,18 @@
 # Rules
---acronyms "ID,URL,UUID"
---allman false
 --decimalgrouping 3,4
---disable blankLinesAroundMark
---disable blankLinesAtEndOfScope
---disable blankLinesAtStartOfScope
---disable spaceAroundOperators
---disable strongOutlets
---disable wrapMultilineStatementBraces
 --guardelse same-line
 --indent tab
 --stripunusedargs unnamed-only
+
+# Disabled Rules
+--disable blankLinesAroundMark
+--disable blankLinesAtEndOfScope
+--disable blankLinesAtStartOfScope
+--disable strongOutlets
+--disable wrapMultilineStatementBraces
+
+# Opt-in Rules
+--enable acronyms
 
 # Files
 --exclude **/*generated.swift

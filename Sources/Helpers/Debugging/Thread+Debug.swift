@@ -1,5 +1,5 @@
-// Thread+Debug.swift, 12.01.2021-16.11.2022.
-// Copyright © 2021-2022 Stanislav Lomachinskiy.
+// Thread+Debug.swift, 12.01.2021-05.04.2024.
+// Copyright © 2021-2024 Stanislav Lomachinskiy.
 
 import Foundation
 
@@ -11,7 +11,7 @@ public extension Thread {
 		      let endIndex = description[startIndex...].firstIndex(of: ",") else {
 			return nil
 		}
-		let match = description[startIndex..<endIndex]
+		let match = description[startIndex ..< endIndex]
 		return Int(match)
 	}
 
