@@ -1,5 +1,9 @@
 # Swift Helpers Changelog
 
+## 2.2.0 (2024-04-05)
+
+- `URL.expandingTildeInPath` added.
+
 ## 2.1.1 (2024-04-04)
 
 - Availability condition added.

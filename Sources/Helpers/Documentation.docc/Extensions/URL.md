@@ -12,7 +12,11 @@
 
 - ``directoryURL``
 
-### Working with relative URLs
+### Working with File URLs
+
+- ``expandingTildeInPath``
+
+### Working with Relative URLs
 
 - ``isRelative(of:)``
 - ``isDescendant(of:)``
