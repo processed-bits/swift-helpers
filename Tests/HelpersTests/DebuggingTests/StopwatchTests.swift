@@ -1,5 +1,5 @@
-// StopwatchTests.swift, 06.03.2023-25.04.2023.
-// Copyright © 2023 Stanislav Lomachinskiy.
+// StopwatchTests.swift, 06.03.2023-05.04.2024.
+// Copyright © 2023-2024 Stanislav Lomachinskiy.
 
 import Helpers
 import XCTest
@@ -13,7 +13,7 @@ final class StopwatchTests: XCTestCase {
 
 		let interval: TimeInterval = 0.1
 		let iterations = 10
-		for _ in 1...iterations {
+		for _ in 1 ... iterations {
 			stopwatch.start()
 			try await Task.sleep(for: .seconds(interval))
 			stopwatch.stop()

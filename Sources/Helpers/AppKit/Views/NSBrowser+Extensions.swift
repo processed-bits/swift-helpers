@@ -1,4 +1,4 @@
-// NSBrowser+Extensions.swift, 07.09.2019-06.03.2024.
+// NSBrowser+Extensions.swift, 07.09.2019-05.04.2024.
 // Copyright © 2019-2024 Stanislav Lomachinskiy.
 
 #if os(macOS)
@@ -10,7 +10,7 @@
 
 		/// Reloads all columns.
 		func reloadColumns() {
-			for column in 0...numberOfVisibleColumns {
+			for column in 0 ... numberOfVisibleColumns {
 				reloadColumn(column)
 			}
 		}

@@ -1,5 +1,5 @@
-// NSTextCheckingResult+Extensions.swift, 12.12.2017-04.02.2022.
-// Copyright © 2017-2022 Stanislav Lomachinskiy.
+// NSTextCheckingResult+Extensions.swift, 12.12.2017-05.04.2024.
+// Copyright © 2017-2024 Stanislav Lomachinskiy.
 
 import Foundation
 
@@ -59,7 +59,7 @@ public extension NSTextCheckingResult {
 
 	/// Returns the line number where the specified range starts.
 	private func lineNumber(range: Range<String.Index>, in string: String) -> Int {
-		let fullRange = string.startIndex...range.lowerBound
+		let fullRange = string.startIndex ... range.lowerBound
 		let lineNumber = string[fullRange].reduce(1) { result, character in
 			character == "\n" ? result + 1 : result
 		}

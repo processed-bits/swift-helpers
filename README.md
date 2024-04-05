@@ -25,7 +25,7 @@ Use Xcode to add the package to a project, or add dependencies manually to a pac
 let package = Package(
     // …
     dependencies: [
-        .package(url: "https://github.com/processed-bits/swift-helpers", upToNextMajor(from: "2.1.1"),
+        .package(url: "https://github.com/processed-bits/swift-helpers", upToNextMajor(from: "2.2.0"),
     ],
 	targets: [
 		.target(

@@ -1,4 +1,4 @@
-// CallsCounterTests.swift, 11.02.2023-23.03.2024.
+// CallsCounterTests.swift, 11.02.2023-05.04.2024.
 // Copyright © 2023-2024 Stanislav Lomachinskiy.
 
 import Helpers
@@ -15,7 +15,7 @@ final class CallsCounterTests: XCTestCase {
 		let callsCounter = CallsCounter(expectedCount: iterations)
 		let threadsCounter = ThreadsCounter()
 		await withTaskGroup(of: Void.self) { taskGroup in
-			for _ in 0..<iterations {
+			for _ in 0 ..< iterations {
 				taskGroup.addTask {
 					callsCounter.increment()
 					threadsCounter.add()
@@ -45,7 +45,7 @@ final class CallsCounterTests: XCTestCase {
 		let callsCounter = CallsCounter(expectedCount: iterations)
 		let threadsCounter = ThreadsCounter()
 		let operationQueue = OperationQueue()
-		for _ in 0..<iterations {
+		for _ in 0 ..< iterations {
 			operationQueue.addOperation {
 				callsCounter.increment()
 				threadsCounter.add()

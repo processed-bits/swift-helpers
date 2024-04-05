@@ -1,4 +1,4 @@
-// AtomicTests.swift, 12.04.2023-23.03.2024.
+// AtomicTests.swift, 12.04.2023-05.04.2024.
 // Copyright © 2023-2024 Stanislav Lomachinskiy.
 
 import Helpers
@@ -14,7 +14,7 @@ final class AtomicTests: XCTestCase {
 
 	func test() async {
 		await withTaskGroup(of: Void.self) { taskGroup in
-			for index in 0..<iterations {
+			for index in 0 ..< iterations {
 				taskGroup.addTask { [self] in
 					_indices.mutatingBlock { indices in
 						indices.append(index)

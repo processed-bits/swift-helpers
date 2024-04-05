@@ -1,11 +1,11 @@
-// URL+Relationships.swift, 28.02.2024-04.03.2024.
+// URL+Relationships.swift, 28.02.2024-05.04.2024.
 // Copyright © 2024 Stanislav Lomachinskiy.
 
 import Foundation
 
 public extension URL {
 
-	/// Returns a URL constructed by removing the last path component of self, if the URL represents a file.
+	/// Returns a URL made by removing the last path component of self, if the URL represents a file.
 	///
 	/// If the URL represents a directory, this method returns `self`.
 	var directoryURL: URL {
