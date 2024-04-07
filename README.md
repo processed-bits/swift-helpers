@@ -1,7 +1,7 @@
 # Swift Helpers
 
-[![][swift-versions-shield][spi-package]
-[![][platforms-shield][spi-package]
+[![][swift-versions-shield]][spi-package]
+[![][platforms-shield]][spi-package]
 
 Miscellaneous extensions and objects.
 
