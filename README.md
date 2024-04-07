@@ -1,5 +1,8 @@
 # Swift Helpers
 
+[![][swift-versions-shield][spi-package]
+[![][platforms-shield][spi-package]
+
 Miscellaneous extensions and objects.
 
 Collection | Description
@@ -65,3 +68,7 @@ Available [here](CHANGELOG.md).
 ---
 
 Copyright © 2023-2024 Stanislav Lomachinskiy. [MIT License](LICENSE.txt).
+
+[spi-package]: https://swiftpackageindex.com/processed-bits/swift-helpers
+[swift-versions-shield]: https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fprocessed-bits%2Fswift-helpers%2Fbadge%3Ftype%3Dswift-versions
+[platforms-shield]: https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fprocessed-bits%2Fswift-helpers%2Fbadge%3Ftype%3Dplatforms
