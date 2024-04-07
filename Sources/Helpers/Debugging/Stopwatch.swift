@@ -1,10 +1,10 @@
-// Stopwatch.swift, 15.04.2023-25.04.2023.
-// Copyright © 2023 Stanislav Lomachinskiy.
+// Stopwatch.swift, 15.04.2023-07.04.2024.
+// Copyright © 2023-2024 Stanislav Lomachinskiy.
 
 import Foundation
 
 /// A stopwatch for measurement of the elapsed time.
-public class Stopwatch: CustomStringConvertible, CustomDebugStringConvertible, CustomReflectable {
+public class Stopwatch: Decodable, CustomStringConvertible, CustomDebugStringConvertible, CustomReflectable {
 
 	/// The total elapsed time of the stopwatch.
 	public var result: TimeInterval {
