@@ -1,5 +1,5 @@
-// SplitStopwatch.swift, 17.04.2023-07.04.2024.
-// Copyright © 2023-2024 Stanislav Lomachinskiy.
+// SplitStopwatch.swift, 17.04.2023-25.04.2023.
+// Copyright © 2023 Stanislav Lomachinskiy.
 
 import Foundation
 
@@ -19,10 +19,6 @@ public class SplitStopwatch: Stopwatch {
 		super.init(start: date, precision: precision)
 		let lap = Stopwatch(start: date, precision: precision)
 		laps.append(lap)
-	}
-
-	required init(from decoder: any Decoder) throws {
-		try super.init(from: decoder)
 	}
 
 	// MARK: Manipulating a Stopwatch
