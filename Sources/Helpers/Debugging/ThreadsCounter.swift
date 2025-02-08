@@ -1,10 +1,10 @@
-// ThreadsCounter.swift, 11.01.2021-13.04.2023.
-// Copyright © 2021-2023 Stanislav Lomachinskiy.
+// ThreadsCounter.swift, 11.01.2021-10.04.2024.
+// Copyright © 2021-2024 Stanislav Lomachinskiy.
 
 import Foundation
 
 /// Count and list threads for debugging of concurrent code.
-public class ThreadsCounter {
+public class ThreadsCounter: CustomStringConvertible {
 
 	/// Numbers of used threads.
 	@Atomic public private(set) var numbers: Set<Int> = []
@@ -23,10 +23,6 @@ public class ThreadsCounter {
 			numbers.update(with: number)
 		}
 	}
-
-}
-
-extension ThreadsCounter: CustomStringConvertible {
 
 	/// A description with the count and numbers of used threads.
 	public var description: String {

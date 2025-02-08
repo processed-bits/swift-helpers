@@ -10,7 +10,13 @@ let package = Package(
 		.package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
 	],
 	targets: [
-		.target(name: "Helpers"),
-		.testTarget(name: "HelpersTests", dependencies: ["Helpers"]),
+		.target(
+			name: "Helpers",
+			swiftSettings: [.enableUpcomingFeature("BareSlashRegexLiterals")]
+		),
+		.testTarget(
+			name: "HelpersTests",
+			dependencies: ["Helpers"]
+		),
 	]
 )

@@ -1,7 +1,14 @@
-// String+Extensions.swift, 05.05.2023-07.03.2024.
-// Copyright © 2023-2024 Stanislav Lomachinskiy.
+// String+Extensions.swift, 05.05.2023-03.01.2025.
+// Copyright © 2023-2025 Stanislav Lomachinskiy.
 
 public extension String {
+
+	// MARK: Creating a String
+
+	/// Creates a new string from a collection of Unicode scalar values.
+	init(_ scalars: [Unicode.Scalar]) {
+		self.init(UnicodeScalarView(scalars))
+	}
 
 	// MARK: Quoted Filenames
 

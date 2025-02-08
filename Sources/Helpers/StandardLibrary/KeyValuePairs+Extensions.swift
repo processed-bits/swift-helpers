@@ -1,25 +1,56 @@
-// KeyValuePairs+Extensions.swift, 19.11.2023-07.03.2024.
-// Copyright © 2023-2024 Stanislav Lomachinskiy.
+// KeyValuePairs+Extensions.swift, 19.11.2023-08.02.2025.
+// Copyright © 2023-2025 Stanislav Lomachinskiy.
 
-/// Formatting helpers.
 public extension KeyValuePairs {
+
+	// MARK: Formatting Key-Value Pairs
 
 	/// Creates a string representation of key-value pairs where values are aligned for monospaced output.
 	///
 	/// - Parameters:
-	///   - keyColumnWidth: The width of the key column. The default is `nil`, which will use the width of the longest key.
-	///   - keyTerminator: A string to add after each key. The default terminator is an empty string.
+	///   - maxKeyLength: The maximum key length, must be greater than zero. Defaults to `nil`, which will use the length of the longest key.
+	///   - keyTruncationTerminator: The key truncation termination string. Defaults to ``String/defaultTruncationTerminator``.
+	///   - keySuffix: A string to add after each truncated key. Defaults to an empty string.
+	///   - keyValueSeparator: A string to use as a key-value separator. Defaults to a space.
 	///
-	/// Keys and values are separated by at least one space. When key terminator is used, the width of the key column will be adjusted. This method is intended for debug logging during development.
-	func format(keyColumnWidth: Int? = nil, keyTerminator: String = "") -> String where Key == String {
+	/// Each output line may be expressed by the pseudocode:
+	///
+	/// ```
+	/// truncatedKey + keySuffix + padding + keyValueSeparator + value
+	/// ```
+	///
+	/// You may obtain different output styles by customizing the key suffix or the key-value separator. For example, use a colon (`:`) as a key suffix for a minimalistic, but delimited style. Or use an arrow surrounded by spaces (` → `) as a key-value separator for an expressive delimited style.
+	func formatted(
+		maxKeyLength: Int? = nil,
+		keyTruncationTerminator: any StringProtocol = String.defaultTruncationTerminator,
+		keySuffix: String = "",
+		keyValueSeparator: String = " "
+	) -> String where Key == String {
+		lazy var longestKeyLength = map { $0.key.count }.max()
+
+		// The collection must not be empty (then `keyLength` will always be unwrapped). Otherwise, return an empty string.
+		guard !isEmpty, let keyLength = maxKeyLength ?? longestKeyLength else {
+			return ""
+		}
+
+		guard keyLength > 0 else {
+			fatalError("`keyLength` must be greater than zero.")
+		}
+
 		var lines: [String] = []
-		let keyColumnWidth = (keyColumnWidth ?? map { $0.key }.max()?.count ?? 0)
 		for (key, value) in self {
-			let keyColumn = key.truncated(to: keyColumnWidth) + keyTerminator
-			let line = keyColumn.padding(toLength: keyColumnWidth + keyTerminator.count) + " " + String(describing: value)
+			let truncatedKey = key.truncated(to: keyLength, with: keyTruncationTerminator) + keySuffix
+			// Pad the key to the length including the key suffix.
+			let paddedKey = truncatedKey.padding(toLength: keyLength + keySuffix.count)
+			let line = paddedKey + keyValueSeparator + String(describing: value)
 			lines.append(line)
 		}
 		return lines.joined(separator: "\n")
+	}
+
+	@available(*, deprecated, message: "Please use formatted(maxKeyLength:keyTruncationTerminator:keySuffix:keyValueSeparator:).")
+	func format(keyColumnWidth: Int? = nil, keyTerminator: String = "") -> String where Key == String {
+		formatted(maxKeyLength: keyColumnWidth, keySuffix: keyTerminator)
 	}
 
 }

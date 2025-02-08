@@ -13,7 +13,7 @@ import Foundation
 /// @Atomic var numbers: [Int] = []
 ///
 /// _numbers.mutatingBlock { numbers in
-///     numbers.append(Int.random(in: Int.min...Int.max))
+///     numbers.append(Int.random(in: Int.min ... Int.max))
 /// }
 /// ```
 @propertyWrapper

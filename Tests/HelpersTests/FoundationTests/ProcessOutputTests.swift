@@ -18,8 +18,8 @@
 		func testDetachedOutput() async throws {
 			// Set up process and output.
 			let process = Process(script: script)
-			XCTAssertTrue(process.isUsingStandardOutput)
-			XCTAssertTrue(process.isUsingStandardError)
+			XCTAssert(process.isUsingStandardOutput)
+			XCTAssert(process.isUsingStandardError)
 			process.detachOutput()
 			XCTAssertFalse(process.isUsingStandardOutput)
 			XCTAssertFalse(process.isUsingStandardError)
@@ -35,8 +35,8 @@
 		func testDetachedCombinedOutput() async throws {
 			// Set up process and output.
 			let process = Process(script: script)
-			XCTAssertTrue(process.isUsingStandardOutput)
-			XCTAssertTrue(process.isUsingStandardError)
+			XCTAssert(process.isUsingStandardOutput)
+			XCTAssert(process.isUsingStandardError)
 			process.detachCombinedOutput()
 			XCTAssertFalse(process.isUsingStandardOutput)
 			XCTAssertFalse(process.isUsingStandardError)
@@ -51,8 +51,8 @@
 		func testBufferedOutput() async throws {
 			// Set up process and output.
 			let process = Process(script: script)
-			XCTAssertTrue(process.isUsingStandardOutput)
-			XCTAssertTrue(process.isUsingStandardError)
+			XCTAssert(process.isUsingStandardOutput)
+			XCTAssert(process.isUsingStandardError)
 			// Run and check output.
 			let bufferedOutput = try await process.runUntilEndOfOutput()
 			XCTAssertFalse(process.isUsingStandardOutput)
