@@ -10,7 +10,7 @@ final class NSRegularExpressionTests: XCTestCase {
 		let string = "abc"
 		let pattern = "[a-z]"
 		let regex = try NSRegularExpression(pattern: pattern, options: .caseInsensitive)
-		XCTAssertTrue(regex ~= string)
+		XCTAssert(regex ~= string)
 		XCTAssertEqual(regex.numberOfMatches(in: string), 3)
 		XCTAssertEqual(regex.matches(in: string).count, 3)
 		XCTAssertNotNil(regex.firstMatch(in: string))

@@ -1,10 +1,10 @@
-// FileHandle+TextOutputStream.swift, 29.01.2022-07.03.2024.
+// FileHandle+TextOutputStream.swift, 29.01.2022-28.11.2024.
 // Copyright © 2022-2024 Stanislav Lomachinskiy.
 
 import Foundation
 
 /// `TextOutputStream` conformance.
-extension FileHandle: TextOutputStream {
+extension FileHandle: @retroactive TextOutputStream {
 
 	public func write(_ string: String) {
 		let data = Data(string.utf8)

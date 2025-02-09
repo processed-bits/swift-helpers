@@ -1,5 +1,5 @@
-// UserDefaultRawRepresentableTests.swift, 12.02.2023-20.11.2023.
-// Copyright © 2023 Stanislav Lomachinskiy.
+// UserDefaultRawRepresentableTests.swift, 12.02.2023-08.02.2025.
+// Copyright © 2023-2025 Stanislav Lomachinskiy.
 
 import Helpers
 import XCTest
@@ -36,7 +36,7 @@ final class UserDefaultRawRepresentableTests: XCTestCase {
 			"Value": XCTUnwrap(value),
 			"Raw value": XCTUnwrap(value).rawValue,
 		]
-		print(pairs.format(keyTerminator: ":"))
+		print(pairs.formatted(keySuffix: ":"))
 
 		XCTAssertEqual(wrapper, value)
 		wrapper = nil

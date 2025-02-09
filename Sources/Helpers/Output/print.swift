@@ -5,8 +5,8 @@
 ///
 /// - Parameters:
 ///   - items: Zero or more items to print.
-///   - separator: A string to print between each item. The default is a single space `(" ")`.
-///   - terminator: The string to print after all items have been printed. The default is a newline `("\n")`.
+///   - separator: A string to print between each item. The default is a single space (` `).
+///   - terminator: The string to print after all items have been printed. The default is a newline (`\n`).
 ///   - streamKind: An output stream kind. The default is `.standardOutput`.
 public func print(_ items: Any..., separator: String = " ", terminator: String = "\n", to streamKind: OutputStreamKind = .standardOutput) {
 	switch streamKind {

@@ -14,7 +14,7 @@
 			let item = NSMenuItem(title: "Test Item", keyEquivalent: "T", tag: 99)
 			menu.addItem(item)
 			XCTAssertNotNil(item.keyEquivalent.nilIfEmpty)
-			XCTAssertTrue(item.isEnabled)
+			XCTAssert(item.isEnabled)
 		}
 
 		func testLabel() throws {

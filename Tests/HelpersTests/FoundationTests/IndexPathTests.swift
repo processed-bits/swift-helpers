@@ -16,7 +16,7 @@ final class IndexPathTests: XCTestCase {
 	func testAncestor() throws {
 		let ancestorIndexPath = try XCTUnwrap(nestedIndexPaths.first)
 		for indexPath in nestedIndexPaths.dropFirst() {
-			XCTAssertTrue(ancestorIndexPath.isAncestor(of: indexPath))
+			XCTAssert(ancestorIndexPath.isAncestor(of: indexPath))
 		}
 		for indexPath in nestedIndexPaths {
 			XCTAssertFalse(unrelatedIndexPath.isAncestor(of: indexPath))
@@ -26,7 +26,7 @@ final class IndexPathTests: XCTestCase {
 	func testDescendant() throws {
 		let descendantIndexPath = try XCTUnwrap(nestedIndexPaths.last)
 		for indexPath in nestedIndexPaths.dropLast() {
-			XCTAssertTrue(descendantIndexPath.isDescendant(of: indexPath))
+			XCTAssert(descendantIndexPath.isDescendant(of: indexPath))
 		}
 		for indexPath in nestedIndexPaths {
 			XCTAssertFalse(unrelatedIndexPath.isDescendant(of: indexPath))

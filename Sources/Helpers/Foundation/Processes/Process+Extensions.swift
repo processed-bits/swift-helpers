@@ -1,4 +1,4 @@
-// Process+Extensions.swift, 23.03.2023-07.03.2024.
+// Process+Extensions.swift, 23.03.2023-28.11.2024.
 // Copyright © 2023-2024 Stanislav Lomachinskiy.
 
 #if os(macOS)
@@ -23,9 +23,9 @@
 		) {
 			self.init()
 			if #available(macOS 13.0, macCatalyst 16.0, *) {
-				executableURL = URL(filePath: shellPath)
+				executableURL = URL(filePath: shellPath, directoryHint: .notDirectory)
 			} else {
-				executableURL = URL(fileURLWithPath: shellPath)
+				executableURL = URL(fileURLWithPath: shellPath, isDirectory: false)
 			}
 			arguments = shellArguments + [script] + scriptArguments
 		}

@@ -1,7 +1,7 @@
-// CAMediaTiming+Extensions.swift, 26.11.2022-23.03.2024.
-// Copyright © 2022-2024 Stanislav Lomachinskiy.
+// CAMediaTiming+Extensions.swift, 26.11.2022-09.02.2025.
+// Copyright © 2022-2025 Stanislav Lomachinskiy.
 
-#if canImport(QuartzCore)
+#if canImport(QuartzCore.CAMediaTiming)
 	import QuartzCore
 
 	public extension CAMediaTiming {

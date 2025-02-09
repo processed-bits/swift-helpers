@@ -1,5 +1,5 @@
-// StringProtocol+Padding.swift, 16.12.2017-07.03.2024.
-// Copyright © 2017-2024 Stanislav Lomachinskiy.
+// StringProtocol+Padding.swift, 16.12.2017-08.02.2025.
+// Copyright © 2017-2025 Stanislav Lomachinskiy.
 
 public extension StringProtocol {
 
@@ -11,9 +11,13 @@ public extension StringProtocol {
 	///   - newLength: New length for the string. `newLength` must be greater than or equal to zero.
 	///   - padString: The pad string. Defaults to a single space.
 	///   - padSide: The side to pad the string.
-	func padding(toLength newLength: Int, withPad padString: String = " ", padSide: String.PaddingSide = .trailing) -> String {
+	func padding(
+		toLength newLength: Int,
+		withPad padString: String = " ",
+		padSide: String.PaddingSide = .trailing
+	) -> String {
 		guard newLength >= 0 else {
-			fatalError("Negative count not allowed")
+			fatalError("`newLength` must be greater than or equal to zero.")
 		}
 		switch (newLength, padSide) {
 		case (count, _):

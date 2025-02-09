@@ -36,7 +36,7 @@ final class AtomicTests: XCTestCase {
 		let isOrderRelaxed = indices.enumerated().contains { index, storedIndex in
 			index != storedIndex
 		}
-		XCTAssertTrue(isOrderRelaxed)
+		XCTAssert(isOrderRelaxed)
 
 		// Assert that counter equals iterations.
 		XCTAssertEqual(counter, iterations)

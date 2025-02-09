@@ -1,8 +1,8 @@
-// CallsCounter.swift, 11.01.2021-23.03.2024.
+// CallsCounter.swift, 11.01.2021-10.04.2024.
 // Copyright © 2021-2024 Stanislav Lomachinskiy.
 
 /// Count the number or balance of calls (invocations) for debugging of code.
-public class CallsCounter {
+public class CallsCounter: CustomStringConvertible {
 
 	/// Expected number of calls.
 	public let expectedCount: Int?
@@ -31,18 +31,20 @@ public class CallsCounter {
 		}
 	}
 
-}
-
-extension CallsCounter: CustomStringConvertible {
-
 	/// A description with the count of calls.
 	public var description: String {
-		if let expectedCount {
-			let format = "%d of %d"
-			return String.localizedStringWithFormat(format, count, expectedCount)
+		if #available(iOS 15.0, macOS 12.0, macCatalyst 15.0, tvOS 15.0, watchOS 8.0, visionOS 1.0, *) {
+			if let expectedCount {
+				return "\(count.formatted()) of \(expectedCount.formatted())"
+			} else {
+				return count.formatted()
+			}
 		} else {
-			let format = "%d"
-			return String.localizedStringWithFormat(format, count)
+			if let expectedCount {
+				return String.localizedStringWithFormat("%d of %d", count, expectedCount)
+			} else {
+				return String.localizedStringWithFormat("%d", count)
+			}
 		}
 	}
 

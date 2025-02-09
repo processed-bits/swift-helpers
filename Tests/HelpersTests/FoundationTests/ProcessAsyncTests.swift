@@ -1,4 +1,4 @@
-// ProcessAsyncTests.swift, 13.04.2023-05.04.2024.
+// ProcessAsyncTests.swift, 13.04.2023-10.04.2024.
 // Copyright © 2023-2024 Stanislav Lomachinskiy.
 
 #if os(macOS)
@@ -41,7 +41,7 @@
 				try await process.runUntilExit()
 			}
 			// Check that async performance is not worse than standard. This includes defined tolerance.
-			let ratio: Double = asyncStopwatch.result / standardStopwatch.result
+			let ratio = asyncStopwatch.measurement.value / standardStopwatch.measurement.value
 			let resultString = "\(asyncStopwatch) \(ratio <= 1 ? "<" : ">") \(standardStopwatch)"
 			print("Async vs. standard process: \(resultString).")
 			return ratio

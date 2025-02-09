@@ -1,5 +1,5 @@
-// UserDefaultTests.swift, 12.02.2023-20.11.2023.
-// Copyright © 2023 Stanislav Lomachinskiy.
+// UserDefaultTests.swift, 12.02.2023-08.02.2025.
+// Copyright © 2023-2025 Stanislav Lomachinskiy.
 
 import Helpers
 import XCTest
@@ -28,7 +28,7 @@ final class UserDefaultTests: XCTestCase {
 			"Value type": Value.self,
 			"Value": XCTUnwrap(value),
 		]
-		print(pairs.format(keyTerminator: ":"))
+		print(pairs.formatted(keySuffix: ":"))
 
 		XCTAssertEqual(wrapper, value)
 		wrapper = nil
