@@ -1,5 +1,5 @@
-// NSRegularExpression+Extensions.swift, 16.02.2020-05.04.2024.
-// Copyright © 2020-2024 Stanislav Lomachinskiy.
+// NSRegularExpression+Extensions.swift, 16.02.2020-14.02.2025.
+// Copyright © 2020-2025 Stanislav Lomachinskiy.
 
 import Foundation
 
@@ -22,7 +22,7 @@ public extension NSRegularExpression {
 	}
 
 	/// Enumerates the string allowing the block to handle each regular expression match.
-	func enumerateMatches(in string: String, options: NSRegularExpression.MatchingOptions = [], range: Range<String.Index>? = nil, using block: (NSTextCheckingResult?, NSRegularExpression.MatchingFlags, UnsafeMutablePointer<ObjCBool>) -> Void) {
+	func enumerateMatches(in string: String, options: NSRegularExpression.MatchingOptions = [], range: Range<String.Index>? = nil, using block: @escaping (NSTextCheckingResult?, NSRegularExpression.MatchingFlags, UnsafeMutablePointer<ObjCBool>) -> Void) {
 		let range = range ?? string.startIndex ..< string.endIndex
 		enumerateMatches(in: string, options: options, range: NSRange(range, in: string), using: block)
 	}

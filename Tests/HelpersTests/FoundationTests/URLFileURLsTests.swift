@@ -1,11 +1,12 @@
-// URLFileURLsTests.swift, 05.04.2024-14.12.2024.
-// Copyright © 2024 Stanislav Lomachinskiy.
+// URLFileURLsTests.swift, 05.04.2024-14.02.2025.
+// Copyright © 2024-2025 Stanislav Lomachinskiy.
 
 import Foundation
 import Helpers
 import Testing
 
 private extension URL {
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@discardableResult func assertExpandingTildeInPath(_ expected: Bool = true, sourceLocation: SourceLocation = #_sourceLocation) -> Self {
 		let expandedURL = expandingTildeInPath
 		let expandedPath = expandedURL.path(percentEncoded: false)
@@ -17,6 +18,7 @@ private extension URL {
 
 struct URLFileURLsTests {
 
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@Test func expandingTildeInPath() throws {
 		// Directory URLs.
 		URL(filePath: "~").assertExpandingTildeInPath()

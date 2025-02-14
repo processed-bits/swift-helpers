@@ -11,8 +11,8 @@ var package = Package(
 		.package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
 	],
 	targets: [
-		.target(name: "Helpers", swiftSettings: [.bareSlashRegexLiterals]),
-		.testTarget(name: "HelpersTests", dependencies: ["Helpers"], swiftSettings: [.bareSlashRegexLiterals]),
+		.target(name: "Helpers"),
+		.testTarget(name: "HelpersTests", dependencies: ["Helpers"]),
 	]
 )
 
@@ -21,8 +21,10 @@ extension SwiftSetting {
 	static let strictConcurrency: Self = .enableExperimentalFeature("StrictConcurrency")
 }
 
-#if compiler(<6)
-	for package in package.targets {
-		package.swiftSettings += [.strictConcurrency]
-	}
-#endif
+for package in package.targets {
+	#if compiler(>=6)
+		package.swiftSettings = [.bareSlashRegexLiterals]
+	#else
+		package.swiftSettings = [.bareSlashRegexLiterals, .strictConcurrency]
+	#endif
+}
