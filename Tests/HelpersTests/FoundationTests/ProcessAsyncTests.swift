@@ -1,5 +1,5 @@
-// ProcessAsyncTests.swift, 13.04.2023-05.04.2024.
-// Copyright © 2023-2024 Stanislav Lomachinskiy.
+// ProcessAsyncTests.swift, 13.04.2023-12.02.2025.
+// Copyright © 2023-2025 Stanislav Lomachinskiy.
 
 #if os(macOS)
 	import Helpers
@@ -7,7 +7,7 @@
 
 	final class ProcessAsyncTests: XCTestCase {
 
-		private typealias ProcessClosure = () async throws -> Void
+		private typealias ProcessClosure = @Sendable () async throws -> Void
 		private let maxPerformanceRatio = 1.15
 
 		func testPerformance() async throws {
@@ -41,7 +41,7 @@
 				try await process.runUntilExit()
 			}
 			// Check that async performance is not worse than standard. This includes defined tolerance.
-			let ratio: Double = asyncStopwatch.result / standardStopwatch.result
+			let ratio = asyncStopwatch.measurement.value / standardStopwatch.measurement.value
 			let resultString = "\(asyncStopwatch) \(ratio <= 1 ? "<" : ">") \(standardStopwatch)"
 			print("Async vs. standard process: \(resultString).")
 			return ratio

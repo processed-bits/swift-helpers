@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// A URL bookmark struct.
+/// A URL bookmark structure.
 ///
 /// You can initialize a struct with existing bookmark data or create bookmark data with a URL.
 ///
@@ -44,7 +44,7 @@ public struct URLBookmark: Codable {
 	///   - creationOptions: Options used when creating bookmark data.
 	///   - resolutionOptions: Options used when resolving bookmark data.
 	///   - keys: Keys for resource values to be included when creating bookmark data.
-	///   - relativeURL: The base URL that the bookmark data is relative to.
+	///   - baseURL: The base URL that the bookmark data is relative to.
 	///
 	///     If you’re resolving a security-scoped bookmark to obtain a security-scoped URL, use this parameter as follows:
 	///

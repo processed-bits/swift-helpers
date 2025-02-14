@@ -1,16 +1,16 @@
-// BufferedOutput.swift, 28.03.2023-23.03.2024.
-// Copyright © 2023-2024 Stanislav Lomachinskiy.
+// BufferedOutput.swift, 28.03.2023-12.02.2025.
+// Copyright © 2023-2025 Stanislav Lomachinskiy.
 
 /// A buffered output object.
-public class BufferedOutput: TextOutputStreamable {
+public class BufferedOutput: @unchecked Sendable, TextOutputStreamable {
 
 	/// The chunks are basic elements of the buffered output.
-	@Atomic private var chunks: [Chunk] = []
+	@AtomicSerialized private var chunks: [Chunk] = []
 
 	/// The buffered output stream for standard output.
-	public lazy var output = OutputStream(bufferedOutput: self, kind: .standardOutput)
+	public lazy var output = Stream(bufferedOutput: self, kind: .standardOutput)
 	/// The buffered output stream for standard error.
-	public lazy var error = OutputStream(bufferedOutput: self, kind: .standardError)
+	public lazy var error = Stream(bufferedOutput: self, kind: .standardError)
 
 	// MARK: Creating a Buffered Output Object
 
@@ -38,24 +38,27 @@ public class BufferedOutput: TextOutputStreamable {
 	// MARK: Printing Buffered Output
 
 	/// Writes the buffered output to the respective streams.
-	public func flush() {
-		for chunk in chunks {
-			chunk.print()
+	public func print() {
+		_chunks.mutatingBlock { chunks in
+			for chunk in chunks {
+				chunk.print()
+			}
 		}
 	}
 
 	/// Writes the buffered output into the given output stream.
 	public func write<Target: TextOutputStream>(to target: inout Target) {
-		for chunk in chunks {
-			chunk.write(to: &target)
+		_chunks.mutatingBlock { chunks in
+			for chunk in chunks {
+				chunk.write(to: &target)
+			}
 		}
 	}
 
-	// MARK: - Supporting Types
+	// MARK: Chunk
 
 	/// A structure that stores a block of output.
-	private struct Chunk: TextOutputStreamable {
-
+	private struct Chunk: Sendable, TextOutputStreamable {
 		let streamKind: OutputStreamKind
 		let string: String
 
@@ -68,12 +71,12 @@ public class BufferedOutput: TextOutputStreamable {
 		func write<Target: TextOutputStream>(to target: inout Target) {
 			target.write(string)
 		}
-
 	}
 
-	/// A buffered output stream that may be used both as target and source of text-streaming operations.
-	public class OutputStream: TextOutputStream, TextOutputStreamable {
+	// MARK: Stream
 
+	/// A buffered output stream that may be used both as a target and as a source of text-streaming operations.
+	public class Stream: TextOutputStream, TextOutputStreamable {
 		/// The buffered output that contains this stream.
 		unowned let bufferedOutput: BufferedOutput
 		/// The buffered output stream kind.
@@ -106,7 +109,17 @@ public class BufferedOutput: TextOutputStreamable {
 			Swift.print(self, terminator: "", to: &output)
 			return output.trimmingCharacters(in: .newlines)
 		}
+	}
 
+}
+
+// MARK: - Deprecated
+
+public extension BufferedOutput {
+
+	@available(*, deprecated, renamed: "print()")
+	func flush() {
+		print()
 	}
 
 }

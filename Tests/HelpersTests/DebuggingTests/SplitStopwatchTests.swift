@@ -1,4 +1,4 @@
-// SplitStopwatchTests.swift, 22.04.2023-05.04.2024.
+// SplitStopwatchTests.swift, 22.04.2023-10.04.2024.
 // Copyright © 2023-2024 Stanislav Lomachinskiy.
 
 import Helpers
@@ -30,10 +30,10 @@ final class SplitStopwatchTests: XCTestCase {
 		}
 
 		let totalInterval = interval * Double(iterations)
-		XCTAssertGreaterThan(stopwatch.result, totalInterval)
-		XCTAssertEqual(stopwatch.result, totalInterval, accuracy: totalInterval * 0.05)
+		XCTAssertGreaterThan(stopwatch.measurement.value, totalInterval)
+		XCTAssertEqual(stopwatch.measurement.value, totalInterval, accuracy: totalInterval * 0.05)
 		for lap in stopwatch.laps {
-			XCTAssertEqual(lap.result, interval, accuracy: interval * 0.1)
+			XCTAssertEqual(lap.measurement.value, interval, accuracy: interval * 0.1)
 		}
 	}
 

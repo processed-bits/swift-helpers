@@ -1,5 +1,5 @@
-// ProcessOutputTests.swift, 13.04.2023-07.03.2024.
-// Copyright © 2023-2024 Stanislav Lomachinskiy.
+// ProcessOutputTests.swift, 13.04.2023-12.02.2025.
+// Copyright © 2023-2025 Stanislav Lomachinskiy.
 
 #if os(macOS)
 	import Helpers
@@ -18,12 +18,14 @@
 		func testDetachedOutput() async throws {
 			// Set up process and output.
 			let process = Process(script: script)
-			XCTAssertTrue(process.isUsingStandardOutput)
-			XCTAssertTrue(process.isUsingStandardError)
+			XCTAssert(process.isUsingStandardOutput)
+			XCTAssert(process.isUsingStandardError)
+
 			process.detachOutput()
 			XCTAssertFalse(process.isUsingStandardOutput)
 			XCTAssertFalse(process.isUsingStandardError)
 			XCTAssertNotEqual(process.standardOutput as? Pipe, process.standardError as? Pipe)
+
 			// Run and check output.
 			try await process.runUntilExit()
 			let output = try XCTUnwrap(process.flatOutput())
@@ -35,12 +37,14 @@
 		func testDetachedCombinedOutput() async throws {
 			// Set up process and output.
 			let process = Process(script: script)
-			XCTAssertTrue(process.isUsingStandardOutput)
-			XCTAssertTrue(process.isUsingStandardError)
+			XCTAssert(process.isUsingStandardOutput)
+			XCTAssert(process.isUsingStandardError)
+
 			process.detachCombinedOutput()
 			XCTAssertFalse(process.isUsingStandardOutput)
 			XCTAssertFalse(process.isUsingStandardError)
 			XCTAssertEqual(process.standardOutput as? Pipe, process.standardError as? Pipe)
+
 			// Run and check output.
 			try await process.runUntilExit()
 			let output = try XCTUnwrap(process.flatOutput())
@@ -51,8 +55,9 @@
 		func testBufferedOutput() async throws {
 			// Set up process and output.
 			let process = Process(script: script)
-			XCTAssertTrue(process.isUsingStandardOutput)
-			XCTAssertTrue(process.isUsingStandardError)
+			XCTAssert(process.isUsingStandardOutput)
+			XCTAssert(process.isUsingStandardError)
+
 			// Run and check output.
 			let bufferedOutput = try await process.runUntilEndOfOutput()
 			XCTAssertFalse(process.isUsingStandardOutput)

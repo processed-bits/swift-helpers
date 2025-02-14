@@ -1,9 +1,9 @@
-// LegacyLogger+ExtendedLogger.swift, 11.01.2021-23.03.2024.
-// Copyright © 2021-2024 Stanislav Lomachinskiy.
+// LegacyLogger+ExtendedLogger.swift, 11.01.2021-12.02.2025.
+// Copyright © 2021-2025 Stanislav Lomachinskiy.
 
 extension LegacyLogger: ExtendedLogger {
 
-	public static let `default` = Self()
+	public nonisolated(unsafe) static let `default` = Self()
 
 	// MARK: Logging a Point
 

@@ -1,5 +1,5 @@
-// SplitStopwatch.swift, 17.04.2023-25.04.2023.
-// Copyright © 2023 Stanislav Lomachinskiy.
+// SplitStopwatch.swift, 17.04.2023-10.04.2024.
+// Copyright © 2023-2024 Stanislav Lomachinskiy.
 
 import Foundation
 
@@ -15,9 +15,9 @@ public class SplitStopwatch: Stopwatch {
 
 	// MARK: Creating a Stopwatch
 
-	public required init(start date: Date? = .init(), precision: UInt8 = 3) {
-		super.init(start: date, precision: precision)
-		let lap = Stopwatch(start: date, precision: precision)
+	public required init(start date: Date? = .init()) {
+		super.init(start: date)
+		let lap = Stopwatch(start: date)
 		laps.append(lap)
 	}
 
@@ -33,7 +33,9 @@ public class SplitStopwatch: Stopwatch {
 		laps.last?.stop(at: date)
 	}
 
-	/// Splits the lap.
+	/// Splits the laps.
+	///
+	/// If the stopwatch is not running and the last lap has no measurement (has a value of `0`), a new lap is not added.
 	///
 	/// - Parameters:
 	///   - date: The point in time for the action. The default is the current date and time.
@@ -41,19 +43,18 @@ public class SplitStopwatch: Stopwatch {
 		// Stop the last lap.
 		laps.last?.stop(at: date)
 		// The last lap should have a non-zero result.
-		guard laps.last?.result != 0 else {
-			return
+		if laps.last?.measurement.value != 0 {
+			// Add a new lap. Start it only if the stopwatch is running.
+			let lapStartDate = isRunning ? date : nil
+			let lap = Stopwatch(start: lapStartDate)
+			laps.append(lap)
 		}
-		// Add a new lap. Start it only if the stopwatch is running.
-		let measurementStart = isRunning ? date : nil
-		let lap = Stopwatch(start: measurementStart, precision: precision)
-		laps.append(lap)
 	}
 
 	override public func reset() {
 		super.reset()
 		laps = [
-			Stopwatch(start: nil, precision: precision),
+			Stopwatch(start: nil),
 		]
 	}
 
@@ -73,8 +74,8 @@ public class SplitStopwatch: Stopwatch {
 	}
 
 	override public var customMirror: Mirror {
-		let children: [(String, Any)] = laps.enumerated().map { number, lap in
-			(label: "Lap \(number + 1)", value: lap)
+		let children: [(String, Stopwatch)] = laps.enumerated().map { number, lap in
+			(label: "\(number + 1)", value: lap)
 		}
 		return Mirror(
 			self,

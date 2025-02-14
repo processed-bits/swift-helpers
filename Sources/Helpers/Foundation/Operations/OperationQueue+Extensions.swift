@@ -8,7 +8,7 @@ public extension OperationQueue {
 
 	// MARK: Creating an Operation Queue
 
-	/// Creates a `OperationQueue` object.
+	/// Creates an operation queue.
 	///
 	/// - Parameters:
 	///   - qos: The default service level to apply to operations that the queue invokes.

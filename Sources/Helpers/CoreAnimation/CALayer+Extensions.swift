@@ -1,7 +1,7 @@
-// CALayer+Extensions.swift, 30.04.2019-23.03.2024.
-// Copyright © 2019-2024 Stanislav Lomachinskiy.
+// CALayer+Extensions.swift, 30.04.2019-09.02.2025.
+// Copyright © 2019-2025 Stanislav Lomachinskiy.
 
-#if canImport(QuartzCore)
+#if canImport(QuartzCore.CALayer)
 	import QuartzCore
 
 	public extension CALayer {

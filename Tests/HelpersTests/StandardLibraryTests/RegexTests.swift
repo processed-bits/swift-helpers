@@ -10,7 +10,7 @@ final class RegexTests: XCTestCase {
 	func testMatchingStrings() throws {
 		let string = "abc"
 		let regex = #/[a-z]/#.ignoresCase()
-		XCTAssertTrue(regex ~= string)
+		XCTAssert(regex ~= string)
 		XCTAssertEqual(string.matches(of: regex).count, 3)
 		XCTAssertNotNil(string.firstMatch(of: regex))
 	}

@@ -1,24 +1,39 @@
 # Swift Helpers Changelog
 
+## 3.0.0 (2025-02-14)
+
+- Updated package name in the manifest to `SwiftHelpers`.
+- Heavily reworked URL extensions based on RFC 3986, including normalization, relativization, relationships, base URL, addition of reference kind, and other changes. Added `FilenameComponents` and `HierarchicalPath` structures.
+- Added:
+	- `CharacterSet` extensions.
+	- `Data` extensions.
+- Updated:
+	- `Stopwatch` and `SplitStopwatch` changed to use measurement, added formatting.
+	- `KeyValuePairs` formatter refactored.
+- Other improvements.
+
 ## 2.2.0 (2024-04-05)
 
-- `URL.expandingTildeInPath` added.
+- Added `URL.expandingTildeInPath`.
 
 ## 2.1.1 (2024-04-04)
 
-- Availability condition added.
+- Added availability condition.
 
 ## 2.1.0 (2024-04-03)
 
-- `EventMonitor` wrapper, `Timer` extension added.
+- Added:
+	- `EventMonitor` wrapper.
+	- `Timer` extension.
 
 ## 2.0.0 (2024-03-26)
 
-- Package name updated to `swift-helpers` in the manifest.
+- Updated package name in the manifest to `swift-helpers`.
 - Reorganization of helpers.
-- Availability conditions added.
-- Refactored `URL` extensions.
-- Refactored `URLBookmark` for compatibility with SwiftData.
+- Added availability conditions.
+- Refactored:
+	- `URL` extensions.
+	- `URLBookmark` adds compatibility with SwiftData.
 
 ## 1.0.0 (2023-12-20)
 
