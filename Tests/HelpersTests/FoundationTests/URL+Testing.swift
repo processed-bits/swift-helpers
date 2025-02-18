@@ -1,4 +1,4 @@
-// URL+Testing.swift, 27.11.2024-08.02.2025.
+// URL+Testing.swift, 27.11.2024-15.02.2025.
 // Copyright © 2024-2025 Stanislav Lomachinskiy.
 
 import Foundation
@@ -27,12 +27,14 @@ extension URL {
 	}
 
 	/// Creates a testing file URL that references a path you specify as a string, relative to another base path.
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	init(filePath path: String, relativeTo basePath: String) {
 		let base = URL(filePath: basePath)
 		self = URL(filePath: path, relativeTo: base)
 	}
 
 	/// Dumps the URL. This method is intended only for development of the tests.
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@discardableResult func dump() -> Self {
 		lazy var urlComponents = URLComponents(url: self, resolvingAgainstBaseURL: true)
 		let pairs: KeyValuePairs<String, String> = [

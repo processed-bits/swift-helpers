@@ -1,7 +1,7 @@
-// CGFloat+Extensions.swift, 19.11.2022-14.02.2025.
+// CGFloat+Extensions.swift, 19.11.2022-15.02.2025.
 // Copyright © 2022-2025 Stanislav Lomachinskiy.
 
-#if canImport(CoreFoundation)
+#if canImport(CoreFoundation) && !os(Linux)
 	import CoreFoundation
 
 	public extension CGFloat {

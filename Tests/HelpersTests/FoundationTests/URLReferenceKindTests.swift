@@ -1,4 +1,4 @@
-// URLReferenceKindTests.swift, 27.11.2024-10.01.2025.
+// URLReferenceKindTests.swift, 27.11.2024-15.02.2025.
 // Copyright © 2024-2025 Stanislav Lomachinskiy.
 
 import Foundation
@@ -6,6 +6,7 @@ import Helpers
 import Testing
 
 private extension URL {
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@discardableResult func assertReferenceKind(_ expected: URIReferenceKind, sourceLocation: SourceLocation = #_sourceLocation) -> Self {
 		let result = referenceKind
 		#expect(result == expected, sourceLocation: sourceLocation)
@@ -15,6 +16,7 @@ private extension URL {
 
 struct URLReferenceKindTests {
 
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@Test func general() throws {
 		// Generic URI.
 		try URL(requireString: "https://server.local/x#fragment").assertReferenceKind(.uri(.generic))
@@ -60,6 +62,7 @@ struct URLReferenceKindTests {
 	/// If not preceded, it will be wrongly parsed as an absolute URI when initialized as `URL` string.
 	///
 	/// See RFC 3986 [Section 4.2](https://datatracker.ietf.org/doc/html/rfc3986#section-4.2) for more information.
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@Test func colonInPath() throws {
 		try URLComponents(path: "x:y").requireURL().assertReferenceKind(.relativeReference(.relativePath))
 		try URL(requireString: "./x:y").assertReferenceKind(.relativeReference(.relativePath))
@@ -72,6 +75,7 @@ struct URLReferenceKindTests {
 	/// - a relative-path reference when initialized as `URL` or `URLComponents` string.
 	///
 	/// See RFC 3986 [Section 4.5](https://datatracker.ietf.org/doc/html/rfc3986#section-4.5) for more information.
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@Test func suffixReference() throws {
 		// Wrong reference kind.
 		try URLComponents(host: "www.apple.com").requireURL().assertReferenceKind(.relativeReference(.networkPath))

@@ -1,10 +1,11 @@
-// URLNormalizationTests.swift, 17.04.2024-01.02.2025.
+// URLNormalizationTests.swift, 17.04.2024-15.02.2025.
 // Copyright © 2024-2025 Stanislav Lomachinskiy.
 
 import Foundation
 import Helpers
 import Testing
 
+@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 private typealias Test = NormalizationTest
 
 struct URLNormalizationTests {
@@ -12,6 +13,7 @@ struct URLNormalizationTests {
 	// MARK: Host
 
 	/// Tests host case and percent-encoding normalization.
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@Test func host() throws {
 		let inputHost = "eXAMPLE.com"
 		// All characters encoded, percent-encoding triplets have A-F letters lowercased.
@@ -34,6 +36,7 @@ struct URLNormalizationTests {
 
 	// MARK: Empty Path
 
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@Test func emptyPath() throws {
 		// Nil or empty host.
 		try Test(string: "file:", expected: "file:")
@@ -71,6 +74,7 @@ struct URLNormalizationTests {
 
 	// MARK: Case-Insensitive Path
 
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@Test func caseInsensitivePath() throws {
 		try Test(string: "MailTo:John.Appleseed@apple.com", lowercasePath: true, expected: "mailto:john.appleseed@apple.com")
 			.assertNormalized()
@@ -79,6 +83,7 @@ struct URLNormalizationTests {
 
 	// MARK: Base
 
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@Test func base() throws {
 		let string = "x/../y/./z"
 		let baseString = "HTTPS://eXAMPLE.com/./a/../b/c"
@@ -103,6 +108,7 @@ struct URLNormalizationTests {
 
 	// MARK: Complex
 
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@Test func complex() throws {
 		// Scheme, path.
 		try Test(string: "File://a/./b/../b/%63/%7bfoo%7d", expected: "file://a/b/c/%7Bfoo%7D")

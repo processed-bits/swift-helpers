@@ -1,4 +1,4 @@
-// URLInitializationTests.swift, 17.05.2022-01.02.2025.
+// URLInitializationTests.swift, 17.05.2022-15.02.2025.
 // Copyright © 2022-2025 Stanislav Lomachinskiy.
 
 import Foundation
@@ -19,6 +19,7 @@ private extension URL {
 	}
 
 	/// Asserts that a URL is initialized to its input or overridden path.
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@discardableResult static func assertInitialized(
 		filePath: String,
 		expected: String? = nil,
@@ -96,6 +97,7 @@ struct URLInitializationTests {
 	/// - an empty path file URL is initialized as `./`;
 	/// - relative path file URL `./` prefixes are removed when initialized;
 	/// - relative path file URL `/.` or `./` suffixes are removed when initialized.
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@Test func filePath() throws {
 		URL.assertInitialized(filePath: "", expected: "./")
 		URL.assertInitialized(filePath: "/")

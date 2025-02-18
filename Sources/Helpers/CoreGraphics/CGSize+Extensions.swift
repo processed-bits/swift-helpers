@@ -1,7 +1,7 @@
-// CGSize+Extensions.swift, 22.07.2021-14.02.2025.
+// CGSize+Extensions.swift, 22.07.2021-15.02.2025.
 // Copyright © 2021-2025 Stanislav Lomachinskiy.
 
-#if canImport(CoreFoundation)
+#if canImport(CoreFoundation) && !os(Linux)
 	import CoreFoundation
 
 	public extension CGSize {

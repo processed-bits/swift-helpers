@@ -1,5 +1,5 @@
-// URLDirectoryTests.swift, 17.05.2022-21.12.2024.
-// Copyright © 2022-2024 Stanislav Lomachinskiy.
+// URLDirectoryTests.swift, 17.05.2022-15.02.2025.
+// Copyright © 2022-2025 Stanislav Lomachinskiy.
 
 import Foundation
 import Testing
@@ -13,7 +13,8 @@ private extension URL {
 
 struct URLDirectoryTests {
 
-	@Test func hasDirectoryPath() throws {
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
+	@Test func fileHasDirectoryPath() throws {
 		// URLs with directory references.
 		URL(filePath: "").assertHasDirectoryPath()
 		URL(filePath: "/").assertHasDirectoryPath()
@@ -46,7 +47,9 @@ struct URLDirectoryTests {
 		URL(filePath: "/../").assertHasDirectoryPath()
 		URL(filePath: "Folder/../").assertHasDirectoryPath()
 		URL(filePath: "/Folder/../").assertHasDirectoryPath()
+	}
 
+	@Test func stringHasDirectoryPath() throws {
 		try URL(requireString: "/").assertHasDirectoryPath()
 		try URL(requireString: "./").assertHasDirectoryPath()
 		try URL(requireString: "path/").assertHasDirectoryPath()

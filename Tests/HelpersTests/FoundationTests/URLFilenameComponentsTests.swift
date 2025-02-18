@@ -1,4 +1,4 @@
-// URLFilenameComponentsTests.swift, 25.12.2024-03.01.2025.
+// URLFilenameComponentsTests.swift, 25.12.2024-15.02.2025.
 // Copyright © 2024-2025 Stanislav Lomachinskiy.
 
 import Foundation
@@ -6,6 +6,7 @@ import Helpers
 import Testing
 
 private extension URL {
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@discardableResult func assertFilenameComponents(expected: FilenameComponents?, sourceLocation: SourceLocation = #_sourceLocation) throws -> Self {
 		#expect(filenameComponents == expected, sourceLocation: sourceLocation)
 
@@ -21,6 +22,7 @@ private extension URL {
 
 struct URLFilenameComponentsTests {
 
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@Test func filenameComponents() throws {
 		// String URL, non-directory reference.
 		try URL(requireString: "scp:/private/tmp/resource").assertFilenameComponents(expected:

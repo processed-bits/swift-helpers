@@ -1,9 +1,10 @@
-// URLBaseURLTests.swift, 05.04.2024-11.01.2025.
+// URLBaseURLTests.swift, 05.04.2024-15.02.2025.
 // Copyright © 2024-2025 Stanislav Lomachinskiy.
 
 import Foundation
 import Testing
 
+@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 private extension URL {
 	@discardableResult func assertIsValidBaseURL(_ expected: Bool = true, sourceLocation: SourceLocation = #_sourceLocation) -> Self {
 		let result = isValidBaseURL
@@ -25,6 +26,7 @@ private extension URL {
 
 struct URLBaseURLTests {
 
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@Test func isValidBaseURL() throws {
 		try URL(requireString: "file:///").assertIsValidBaseURL()
 		try URL(requireString: "file:///x").assertIsValidBaseURL()
@@ -40,6 +42,7 @@ struct URLBaseURLTests {
 		try URL(requireString: "mailto:john.appleseed@apple.com").assertIsValidBaseURL(false)
 	}
 
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@Test func asBaseURL() throws {
 		// Absolute URI.
 		try URL(requireString: "file:///").assertAsBaseURL(string: "file:///")

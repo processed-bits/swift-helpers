@@ -1,4 +1,4 @@
-// URLComponents+Testing.swift, 21.12.2024-08.02.2025.
+// URLComponents+Testing.swift, 21.12.2024-15.02.2025.
 // Copyright © 2024-2025 Stanislav Lomachinskiy.
 
 import Foundation
@@ -27,6 +27,7 @@ extension URLComponents {
 	}
 
 	/// Creates percent-encoded URL components for testing.
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	static func percentEncoded(
 		scheme: String? = nil,
 		user: String? = nil,
@@ -64,6 +65,7 @@ extension URLComponents {
 	}
 
 	/// Dumps the URL components. This method is intended only for development of the tests.
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@discardableResult func dump(percentEncoded: Bool = false) -> Self {
 		let pairs: KeyValuePairs<String, String> = if percentEncoded {
 			[

@@ -1,4 +1,4 @@
-// CLI.swift, 16.02.2020-12.02.2025.
+// CLI.swift, 16.02.2020-15.02.2025.
 // Copyright © 2020-2025 Stanislav Lomachinskiy.
 
 import Foundation
@@ -15,6 +15,10 @@ public enum CLI {
 	/// In comparison to [`FileHandle.standardError`](https://developer.apple.com/documentation/foundation/filehandle/1411001-standarderror) property, this one is a stored property.
 	///
 	/// Together with conformance to [`TextOutputStream`](https://developer.apple.com/documentation/swift/textoutputstream) protocol this allows using [`print(_:separator:terminator:to:)`](https://developer.apple.com/documentation/swift/print(_:separator:terminator:to:)) with this handle as a target.
-	public nonisolated(unsafe) static var standardError = FileHandle.standardError
+	#if compiler(>=6)
+		public nonisolated(unsafe) static var standardError = FileHandle.standardError
+	#else
+		public static var standardError = FileHandle.standardError
+	#endif
 
 }

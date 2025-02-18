@@ -1,10 +1,11 @@
-// URLRelativizationTests.swift, 03.03.2024-22.12.2024.
-// Copyright © 2024 Stanislav Lomachinskiy.
+// URLRelativizationTests.swift, 03.03.2024-15.02.2025.
+// Copyright © 2024-2025 Stanislav Lomachinskiy.
 
 import Foundation
 import Helpers
 import Testing
 
+@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 private extension URL {
 	/// Asserts that the URL is relativized against a base string as a given relative string.
 	@discardableResult func assertRelativized(
@@ -65,6 +66,7 @@ private extension URL {
 
 struct URLRelativizationTests {
 
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@Test func stringURLs() throws {
 		// Directory.
 		try URL(requireString: "https://github.com/apple/swift/").assertRelativized(
@@ -147,6 +149,7 @@ struct URLRelativizationTests {
 		)
 	}
 
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@Test func ascendingStringURLs() throws {
 		// Directory.
 		try URL(requireString: "https://github.com/").assertRelativized(
@@ -206,6 +209,7 @@ struct URLRelativizationTests {
 		)
 	}
 
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@Test func fileURLs() throws {
 		// Directory.
 		URL(filePath: "/Library/Caches/").assertRelativized(
@@ -220,6 +224,7 @@ struct URLRelativizationTests {
 		)
 	}
 
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@Test func ascendingFileURLs() throws {
 		// Directory.
 		URL(filePath: "/Applications/").assertRelativized(
@@ -244,6 +249,7 @@ struct URLRelativizationTests {
 		)
 	}
 
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@Test func other() throws {
 		// Relative-path reference base URL.
 		try URL(requireString: "https://github.com/apple/swift/").assertRelativized(

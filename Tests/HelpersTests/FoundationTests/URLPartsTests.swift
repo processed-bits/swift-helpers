@@ -1,5 +1,5 @@
-// URLPartsTests.swift, 05.04.2024-14.12.2024.
-// Copyright © 2024 Stanislav Lomachinskiy.
+// URLPartsTests.swift, 05.04.2024-15.02.2025.
+// Copyright © 2024-2025 Stanislav Lomachinskiy.
 
 import Foundation
 import Testing
@@ -38,7 +38,7 @@ struct URLPartsTests {
 		try URL(requireString: "https://github.com").assertLastPathComponent(expected: "")
 	}
 
-	@Test func stem() throws {
+	@Test func stringStem() throws {
 		try URL(requireString: "foo.zip").assertStem(expected: "foo")
 		try URL(requireString: "foo.tar.gz").assertStem(expected: "foo.tar")
 		try URL(requireString: "/tmp/foo.txt").assertStem(expected: "foo")
@@ -55,7 +55,10 @@ struct URLPartsTests {
 
 		try URL(requireString: "/").assertStem(expected: "/")
 		try URL(requireString: "https://github.com").assertStem(expected: nil)
+	}
 
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
+	@Test func fileStem() throws {
 		try URL(filePath: "foo.zip").assertStem(expected: "foo")
 		try URL(filePath: "foo.tar.gz").assertStem(expected: "foo.tar")
 		try URL(filePath: "/tmp/foo.txt").assertStem(expected: "foo")

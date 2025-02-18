@@ -1,7 +1,7 @@
-// Process+Extensions.swift, 23.03.2023-28.11.2024.
-// Copyright © 2023-2024 Stanislav Lomachinskiy.
+// Process+Extensions.swift, 23.03.2023-15.02.2025.
+// Copyright © 2023-2025 Stanislav Lomachinskiy.
 
-#if os(macOS)
+#if os(macOS) || targetEnvironment(macCatalyst)
 	import Foundation
 
 	public extension Process {

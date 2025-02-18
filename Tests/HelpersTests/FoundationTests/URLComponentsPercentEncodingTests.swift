@@ -1,4 +1,4 @@
-// URLComponentsPercentEncodingTests.swift, 31.12.2024-30.01.2025.
+// URLComponentsPercentEncodingTests.swift, 31.12.2024-15.02.2025.
 // Copyright © 2024-2025 Stanislav Lomachinskiy.
 
 import Foundation
@@ -71,6 +71,7 @@ private extension StringProtocol {
 
 private extension URLComponents {
 	/// Asserts that the URL components (user, password, host, path, query, fragment) contain percent-encoded characters.
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@discardableResult func assertHasPercentEncoding(_ expected: Bool = true, sourceLocation: SourceLocation = #_sourceLocation) throws -> Self {
 		#expect(expected == (user != percentEncodedUser), sourceLocation: sourceLocation)
 		#expect(expected == (password != percentEncodedPassword), sourceLocation: sourceLocation)
@@ -95,6 +96,7 @@ private extension URLComponents {
 	/// Asserts that the percent-encoded URL components (user, password, host, path, query, fragment) are equal to their `TestString` percent-encoded counterparts.
 	///
 	/// User and password components percent-encode colons according to `encodingColon` parameter.
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@discardableResult func assertEquals(percentEncodedStrings strings: TestStrings, encodingColon: Bool, sourceLocation: SourceLocation = #_sourceLocation) throws -> Self {
 		if encodingColon {
 			#expect(percentEncodedUser == strings.percentEncodedUser, sourceLocation: sourceLocation)
@@ -132,6 +134,7 @@ struct URLComponentsPercentEncodingTests {
 	// MARK: User and Password
 
 	/// `CharacterSet.urlUserAllowed` and `urlPasswordAllowed` do not contain a colon (`:`), so it should be percent-encoded. Still `URLComponents` structure does not percent-encode colon for user and password components.
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@Test func userPasswordPercentEncoding() throws {
 		// Additional test for `URL` instead of `URLComponents`.
 		var url = try URL(requireString: "https://a:b:c@host")
@@ -164,6 +167,7 @@ struct URLComponentsPercentEncodingTests {
 	// MARK: Host
 
 	/// Tests percent-encoding using `host`, `encodedHost`, deprecated `percentEncodedHost` properties, and using string initializer.
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@Test func hostPercentEncoding() throws {
 		let allEncodedHost = try #require(TestStrings.mixed.host?.percentEncoded)
 
@@ -199,6 +203,7 @@ struct URLComponentsPercentEncodingTests {
 
 	// MARK: Complex
 
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@Test func percentEncoding() throws {
 		// Setting properties with allowed characters.
 		var allowedCharactersComponents = URLComponents(
@@ -239,6 +244,7 @@ struct URLComponentsPercentEncodingTests {
 			.assertEquals(percentEncodedStrings: TestStrings.mixed, encodingColon: false)
 	}
 
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@Test func manualPercentEncoding() throws {
 		// Setting percent-encoded properties with encoded mixed characters (colon not encoded for user and password components).
 		var manuallyEncodedComponentsExcludingColon = try URLComponents.percentEncoded(

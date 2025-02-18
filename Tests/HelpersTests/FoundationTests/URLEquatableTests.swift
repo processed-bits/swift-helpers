@@ -1,9 +1,10 @@
-// URLEquatableTests.swift, 17.05.2022-02.12.2024.
-// Copyright © 2022-2024 Stanislav Lomachinskiy.
+// URLEquatableTests.swift, 17.05.2022-15.02.2025.
+// Copyright © 2022-2025 Stanislav Lomachinskiy.
 
 import Foundation
 import Testing
 
+@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 private extension URL {
 	/// Asserts that two string URLs are equal or not.
 	static func assertEqual(
@@ -56,6 +57,7 @@ private extension URL {
 
 struct URLEquatableTests {
 
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@Test func equality() throws {
 		try URL.assertEqual(
 			string: "file:///Library/Caches/",

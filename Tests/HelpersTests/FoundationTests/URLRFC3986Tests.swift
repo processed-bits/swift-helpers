@@ -1,10 +1,11 @@
-// URLRFC3986Tests.swift, 17.04.2024-30.01.2025.
+// URLRFC3986Tests.swift, 17.04.2024-15.02.2025.
 // Copyright © 2024-2025 Stanislav Lomachinskiy.
 
 import Foundation
 import Helpers
 import Testing
 
+@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 private typealias Test = NormalizationTest
 
 /// RFC 3986 [Section 5.4](https://datatracker.ietf.org/doc/html/rfc3986#section-5.4) examples tests.
@@ -17,6 +18,7 @@ struct URLRFC3986Tests {
 
 	// MARK: Normal
 
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@Test func normalExamples() throws {
 		try Test(string: "g:h", relativeTo: baseString, expected: "g:h")
 			.assertAbsoluteString()
@@ -114,6 +116,7 @@ struct URLRFC3986Tests {
 
 	// MARK: Abnormal
 
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	@Test func abnormalExamples() throws {
 		try Test(string: "../../../g", relativeTo: baseString, expected: "http://a/g")
 			.assertAbsoluteString()

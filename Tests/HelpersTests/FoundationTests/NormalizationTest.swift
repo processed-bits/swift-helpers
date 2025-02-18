@@ -1,4 +1,4 @@
-// NormalizationTest.swift, 17.04.2024-09.02.2025.
+// NormalizationTest.swift, 17.04.2024-15.02.2025.
 // Copyright © 2024-2025 Stanislav Lomachinskiy.
 
 #if canImport(System)
@@ -12,6 +12,7 @@
 	/// All assertions, except for those testing `normalized` and `lexicallyNormalized` methods, are non-strict (wrapped as intermittent known issues).
 	///
 	/// Assertion and debugging methods allow chaining by returning self.
+	@available(iOS 16.0, macOS 13.0, macCatalyst 16.0, tvOS 16.0, visionOS 1.0, watchOS 9.0, *)
 	struct NormalizationTest {
 
 		/// The tested URL.

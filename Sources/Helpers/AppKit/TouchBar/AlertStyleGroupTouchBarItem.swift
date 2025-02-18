@@ -1,4 +1,4 @@
-// AlertStyleGroupTouchBarItem.swift, 07.10.2019-12.02.2025.
+// AlertStyleGroupTouchBarItem.swift, 07.10.2019-15.02.2025.
 // Copyright © 2019-2025 Stanislav Lomachinskiy. All rights reserved.
 
 #if canImport(AppKit)
@@ -12,12 +12,18 @@
 
 		/// Replaces existing group item with a group item configured to match system alerts.
 		override public func awakeAfter(using coder: NSCoder) -> Any? {
-			let item = MainActor.assumeIsolated {
+			#if compiler(>=6)
+				let item = MainActor.assumeIsolated {
+					let groupTouchBarItem = NSGroupTouchBarItem(alertStyleWithIdentifier: identifier)
+					groupTouchBarItem.groupTouchBar = groupTouchBar
+					return groupTouchBarItem
+				}
+				return item
+			#else
 				let groupTouchBarItem = NSGroupTouchBarItem(alertStyleWithIdentifier: identifier)
 				groupTouchBarItem.groupTouchBar = groupTouchBar
 				return groupTouchBarItem
-			}
-			return item
+			#endif
 		}
 
 	}
