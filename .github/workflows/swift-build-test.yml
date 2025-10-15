@@ -1,0 +1,52 @@
+name: Swift Build & Test
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - '*'
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  swift-build-test:
+    name: ${{ matrix.os }}, ${{ matrix.swift }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        # `macos-13` is an Intel runner.
+        # `ubuntu-latest` is an x64 runner.
+        os: [macos-15, macos-15-intel, macos-14, macos-13, ubuntu-latest]
+        swift: ["6.1", "6.0"]
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Swift
+        uses: swift-actions/setup-swift@v2
+        with:
+          swift-version: ${{ matrix.swift }}
+
+      - name: Print Swift version
+        run: swift --version
+
+      - name: Resolve Swift dependencies  
+        run: swift package resolve
+
+      - name: Cache build directory  
+        uses: actions/cache@v4
+        with:
+          path: .build
+          key: ${{ matrix.os }}-swift-${{ matrix.swift }}-spm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: ${{ matrix.os }}-swift-${{ matrix.swift }}-spm-
+
+      - name: Build
+        run: swift build --verbose
+
+      - name: Test
+        run: swift test --verbose

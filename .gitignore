@@ -1,3 +1,12 @@
+# Exclude Swift Package Manager build files.
 .build
+
+# Exclude Swift Package Manager files.
 .swiftpm
+
+# Exclude Swift Package Manager dependencies.
+/Packages
 Package.resolved
+
+# Include shared build schemes.
+!xcshareddata/xcschemes/

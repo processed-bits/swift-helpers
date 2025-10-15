@@ -1,4 +1,4 @@
-# MARK: - General
+# MARK: General
 
 disabled_rules:
   - todo
@@ -90,7 +90,7 @@ excluded:
   - Tuist
   - vendor
 
-# MARK: - Individual Rules
+# MARK: Individual Rules
 
 empty_count:
   severity: warning
@@ -126,7 +126,7 @@ type_body_length:
 vertical_whitespace:
   max_empty_lines: 2
 
-# MARK: - Custom Rules
+# MARK: Custom Rules
 
 custom_rules:
 

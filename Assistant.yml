@@ -1,0 +1,25 @@
+highlight: true
+
+tools:
+  -
+    name: SwiftFormat
+    script: |
+      if which swiftformat >/dev/null; then
+        # swiftformat .
+        # swiftformat --lint .
+        swiftformat --verbose .
+        # swiftformat --cache clear .
+      else
+        echo "warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat"
+      fi
+    env-path: /usr/local/bin:/opt/homebrew/bin:$PATH
+  -
+    name: SwiftLint
+    script: |
+      if which swiftlint >/dev/null; then
+        swiftlint .
+      else
+        echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
+      fi
+    env-path: /usr/local/bin:/opt/homebrew/bin:$PATH
+    mutating: false

@@ -1,0 +1,80 @@
+{
+  "configurations" : [
+    {
+      "id" : "35CB1A81-8ADA-420F-A917-98BD85509737",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "AppKitHelpersTests",
+        "name" : "AppKitHelpersTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "CoreGraphicsHelpersTests",
+        "name" : "CoreGraphicsHelpersTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "DebuggingHelpersTests",
+        "name" : "DebuggingHelpersTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "FoundationHelpersTests",
+        "name" : "FoundationHelpersTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "FoundationLegacyHelpersTests",
+        "name" : "FoundationLegacyHelpersTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "LoggingHelpersTests",
+        "name" : "LoggingHelpersTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "OutputHelpersTests",
+        "name" : "OutputHelpersTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "StandardLibraryHelpersTests",
+        "name" : "StandardLibraryHelpersTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "SynchronizationHelpersTests",
+        "name" : "SynchronizationHelpersTests"
+      }
+    }
+  ],
+  "version" : 1
+}

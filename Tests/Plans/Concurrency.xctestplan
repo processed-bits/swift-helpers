@@ -1,0 +1,134 @@
+{
+  "configurations" : [
+    {
+      "id" : "BC52C308-7A6D-4659-A0DB-4D66A65DFC2F",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : false,
+      "selectedTags" : {
+        "tags" : [
+          ".concurrency"
+        ]
+      },
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "AppKitHelpersTests",
+        "name" : "AppKitHelpersTests"
+      }
+    },
+    {
+      "parallelizable" : false,
+      "selectedTags" : {
+        "tags" : [
+          ".concurrency"
+        ]
+      },
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "CoreGraphicsHelpersTests",
+        "name" : "CoreGraphicsHelpersTests"
+      }
+    },
+    {
+      "parallelizable" : false,
+      "selectedTags" : {
+        "tags" : [
+          ".concurrency"
+        ]
+      },
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "DebuggingHelpersTests",
+        "name" : "DebuggingHelpersTests"
+      }
+    },
+    {
+      "parallelizable" : false,
+      "selectedTags" : {
+        "tags" : [
+          ".concurrency"
+        ]
+      },
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "FoundationHelpersTests",
+        "name" : "FoundationHelpersTests"
+      }
+    },
+    {
+      "parallelizable" : false,
+      "selectedTags" : {
+        "tags" : [
+          ".concurrency"
+        ]
+      },
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "FoundationLegacyHelpersTests",
+        "name" : "FoundationLegacyHelpersTests"
+      }
+    },
+    {
+      "parallelizable" : false,
+      "selectedTags" : {
+        "tags" : [
+          ".concurrency"
+        ]
+      },
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "LoggingHelpersTests",
+        "name" : "LoggingHelpersTests"
+      }
+    },
+    {
+      "parallelizable" : false,
+      "selectedTags" : {
+        "tags" : [
+          ".concurrency"
+        ]
+      },
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "OutputHelpersTests",
+        "name" : "OutputHelpersTests"
+      }
+    },
+    {
+      "parallelizable" : false,
+      "selectedTags" : {
+        "tags" : [
+          ".concurrency"
+        ]
+      },
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "StandardLibraryHelpersTests",
+        "name" : "StandardLibraryHelpersTests"
+      }
+    },
+    {
+      "parallelizable" : false,
+      "selectedTags" : {
+        "tags" : [
+          ".concurrency"
+        ]
+      },
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "SynchronizationHelpersTests",
+        "name" : "SynchronizationHelpersTests"
+      }
+    }
+  ],
+  "version" : 1
+}

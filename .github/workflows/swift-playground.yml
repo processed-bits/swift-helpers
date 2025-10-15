@@ -1,0 +1,46 @@
+name: Swift Playground
+
+on:
+  workflow_dispatch:
+    inputs:
+      os:
+        description: 'Operating system'
+        required: true
+        default: 'macos-latest'
+        type: choice
+        options:
+          - macos-latest
+          - macos-15
+          - macos-15-intel
+          - macos-14
+          - macos-13
+          - ubuntu-latest
+      swift:
+        description: 'Swift version'
+        required: true
+        default: '6.2'
+        type: string
+      code:
+        description: 'Swift code to execute'
+        required: true
+        type: string
+
+jobs:
+  swift-playground:
+    name: ${{ inputs.os }}, ${{ inputs.swift }}
+    runs-on: ${{ inputs.os }}
+    
+    steps:
+      - name: Setup Swift
+        uses: swift-actions/setup-swift@v2
+        with:
+          swift-version: ${{ inputs.swift }}
+
+      - name: Print Swift version
+        run: swift --version
+
+      - name: Run Swift Code
+        shell: bash
+        run: |
+          echo "${{ inputs.code }}" > playground.swift
+          swift playground.swift
